@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var loginVM = LoginViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Button("Login") {
+                loginVM.checkCredentialsAndLogIn()
+            }
+            Text(loginVM.isLoggedIn.description)
+            Text(loginVM.user.firstName)
+            Text(loginVM.user.lastName)
+            Text(loginVM.user.emailAddress)
+            Text(loginVM.user.password)
+            Text(loginVM.error?.localizedDescription ?? "empty" )
+            
+            Button("Logout") {
+                loginVM.logOut()
+            }
         }
         .padding()
     }
