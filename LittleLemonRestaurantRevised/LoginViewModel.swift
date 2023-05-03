@@ -19,7 +19,7 @@ final class LoginViewModel: ObservableObject {
             switch result {
             case .success(let success):
                 self?.isLoggedIn = success
-//                self?.getLoggedInUserInfo()
+                self?.getLoggedInUserInfo()
             case .failure(let error):
                 self?.error = error
             }

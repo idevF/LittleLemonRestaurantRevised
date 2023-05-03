@@ -10,29 +10,41 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var loginVM: LoginViewModel
     
+    enum Field: Hashable {
+        case emailField
+        case passwordField
+    }
+    
+    @FocusState private var focusedField: Field?
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
                 Group { Text("Email Address") + Text(" *").foregroundColor(Color("secondaryTwo")) }.font(.headline)
                 TextField("Email Address", text: $loginVM.user.emailAddress)
-                    .font(.headline)
-                    .foregroundColor(Color("secondaryTwo"))
-                    .padding(10)
-                    .background(Color.gray.opacity(0.5), in: RoundedRectangle(cornerRadius: 5))
-                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color("secondaryTwo"), lineWidth: 1))
+                    .brandFormFieldStyle()
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled(true)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                    .submitLabel(.continue)
+                    .focused($focusedField, equals: .emailField)
 
                 Text("* Required")
                     .font(.system(.caption, design: .default, weight: .semibold))
                     .foregroundColor(Color("secondaryTwo"))
+
                 
                 Group { Text("Password") + Text(" *").foregroundColor(Color("secondaryTwo")) }.font(.headline)
                 SecureField("Password", text: $loginVM.user.password)
-                    .font(.headline)
-                    .foregroundColor(Color("secondaryTwo"))
-                    .padding(10)
-                    .background(Color.gray.opacity(0.5), in: RoundedRectangle(cornerRadius: 5))
-                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color("secondaryTwo"), lineWidth: 1))
-                
+                    .brandFormFieldStyle()
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled(true)
+                    .textContentType(.password)
+                    .keyboardType(.default)
+                    .submitLabel(.done)
+                    .focused($focusedField, equals: .passwordField)
+
                 Text("* Required")
                     .font(.system(.caption, design: .default, weight: .semibold))
                     .foregroundColor(Color("secondaryTwo"))
@@ -59,7 +71,18 @@ struct LoginView: View {
                     
                     Button {
                         print("login button \(Thread.current)")
-                        loginVM.checkCredentialsAndLogIn()
+//                        loginVM.checkCredentialsAndLogIn()
+                        
+                        // FocusState logic
+                        if loginVM.user.emailAddress.isEmpty {
+                            focusedField = .emailField
+                        } else if loginVM.user.password.isEmpty {
+                            focusedField = .passwordField
+                        } else {
+                            loginVM.checkCredentialsAndLogIn()
+                            focusedField = nil
+                            print("Log In")
+                        }
                     } label: {
                         Text("Log In")
                             .font(.headline)
@@ -73,7 +96,7 @@ struct LoginView: View {
                 
                 Text("Forgot Password ?")
                     .font(.system(.subheadline, design: .default, weight: .semibold))
-                    .foregroundColor(Color("primaryOne"))
+                    .foregroundColor(Color.secondary)
             }
         }
     }

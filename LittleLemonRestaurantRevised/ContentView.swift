@@ -11,22 +11,24 @@ struct ContentView: View {
     @StateObject var loginVM = LoginViewModel()
     
     var body: some View {
-        VStack {
-            Button("Login") {
-                loginVM.checkCredentialsAndLogIn()
+        if loginVM.isLoggedIn {
+            VStack {
+                Text(loginVM.isLoggedIn.description)
+                Text(loginVM.user.firstName)
+                Text(loginVM.user.lastName)
+                Text(loginVM.user.emailAddress)
+                Text(loginVM.user.password)
+                Text(loginVM.error?.localizedDescription ?? "empty" )
+                
+                Button("Logout") {
+                    loginVM.logOut()
+                }
+                .buttonStyle(.bordered)
             }
-            Text(loginVM.isLoggedIn.description)
-            Text(loginVM.user.firstName)
-            Text(loginVM.user.lastName)
-            Text(loginVM.user.emailAddress)
-            Text(loginVM.user.password)
-            Text(loginVM.error?.localizedDescription ?? "empty" )
-            
-            Button("Logout") {
-                loginVM.logOut()
-            }
+            .padding()
+        } else {
+            LoginView(loginVM: loginVM)
         }
-        .padding()
     }
 }
 
