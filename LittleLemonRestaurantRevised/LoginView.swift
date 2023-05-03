@@ -19,42 +19,20 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
+            
             VStack(alignment: .leading) {
-                Group { Text("Email Address") + Text(" *").foregroundColor(Color("secondaryTwo")) }.font(.headline)
-                TextField("Email Address", text: $loginVM.user.emailAddress)
-                    .brandFormFieldStyle()
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-                    .submitLabel(.continue)
+                FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
                     .focused($focusedField, equals: .emailField)
-
-                Text("* Required")
-                    .font(.system(.caption, design: .default, weight: .semibold))
-                    .foregroundColor(Color("secondaryTwo"))
-
-                
-                Group { Text("Password") + Text(" *").foregroundColor(Color("secondaryTwo")) }.font(.headline)
-                SecureField("Password", text: $loginVM.user.password)
-                    .brandFormFieldStyle()
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled(true)
-                    .textContentType(.password)
-                    .keyboardType(.default)
-                    .submitLabel(.done)
-                    .focused($focusedField, equals: .passwordField)
-
-                Text("* Required")
-                    .font(.system(.caption, design: .default, weight: .semibold))
-                    .foregroundColor(Color("secondaryTwo"))
                     
+                FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
+                    .focused($focusedField, equals: .passwordField)
             }
             .padding()
             .foregroundColor(Color("highlightOne"))
             .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10))
             
             VStack {
+                
                 HStack {
                     Button {
                         print("Sign Up button \(Thread.current)")
@@ -71,6 +49,7 @@ struct LoginView: View {
                     
                     Button {
                         print("login button \(Thread.current)")
+                        print("login button \(loginVM.isLoggedIn)")
 //                        loginVM.checkCredentialsAndLogIn()
                         
                         // FocusState logic
