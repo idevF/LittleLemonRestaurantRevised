@@ -19,6 +19,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
+            HeroView()
             
             VStack(alignment: .leading) {
                 FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
@@ -27,9 +28,7 @@ struct LoginView: View {
                 FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
                     .focused($focusedField, equals: .passwordField)
             }
-            .padding()
-            .foregroundColor(Color("highlightOne"))
-            .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10))
+            .cardViewStyle()
             
             VStack {
                 
