@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A20547772A0275990045E9DF /* FormFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20547762A0275990045E9DF /* FormFieldView.swift */; };
+		A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F265C2A03A84E00AB96CE /* HeaderView.swift */; };
 		A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223C7922A016CAB0082A28D /* LoginAPIService.swift */; };
 		A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223C7942A016E930082A28D /* LoginViewModel.swift */; };
 		A23BF0072A02549A00A8FF2C /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23BF0062A02549A00A8FF2C /* UtilityViews.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		A20547762A0275990045E9DF /* FormFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldView.swift; sourceTree = "<group>"; };
+		A21F265C2A03A84E00AB96CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A223C7922A016CAB0082A28D /* LoginAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIService.swift; sourceTree = "<group>"; };
 		A223C7942A016E930082A28D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A23BF0062A02549A00A8FF2C /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */,
 				A26E3FDE2A0157B50018732A /* ContentView.swift */,
+				A21F265C2A03A84E00AB96CE /* HeaderView.swift */,
 				A29F018A2A02A14C001505FE /* HeroView.swift */,
 				A20547762A0275990045E9DF /* FormFieldView.swift */,
 				A2F074082A0218D700B7DA66 /* LoginView.swift */,
@@ -163,6 +166,7 @@
 				A29F018B2A02A14C001505FE /* HeroView.swift in Sources */,
 				A2F074092A0218D700B7DA66 /* LoginView.swift in Sources */,
 				A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */,
+				A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */,
 				A26E3FDF2A0157B50018732A /* ContentView.swift in Sources */,
 				A26E3FDD2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift in Sources */,
 				A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */,

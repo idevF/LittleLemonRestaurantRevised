@@ -57,6 +57,6 @@ struct FormFieldView_Previews: PreviewProvider {
         }
 //        .padding()
 //        .foregroundColor(Color("highlightOne"))
-//        .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10))
+//        .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 }

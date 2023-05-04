@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HeroView: View {
+    let isLoggedIn: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -23,15 +24,19 @@ struct HeroView: View {
                     .foregroundColor(Color("highlightOne"))
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer()
-                Image("heroimage")
+                Image("heroImage")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             }
             
-//            Image(systemName: "magnifyingglass.circle")
-//                .hidden()
+            if isLoggedIn {
+                Image(systemName: "magnifyingglass.circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25, height: 25)
+            }
         }
         .cardViewStyle()
     }
@@ -39,6 +44,9 @@ struct HeroView: View {
 
 struct HeroView_Previews: PreviewProvider {
     static var previews: some View {
-        HeroView()
+        VStack {
+            HeroView(isLoggedIn: false)
+            HeroView(isLoggedIn: true)
+        }
     }
 }

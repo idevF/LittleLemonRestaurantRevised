@@ -19,9 +19,12 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            HeroView()
-            
+            HeaderView(isLoggedIn: loginVM.isLoggedIn)
+//            Spacer()
+            HeroView(isLoggedIn: loginVM.isLoggedIn)
+//            Spacer()
             VStack(alignment: .leading) {
+                
                 FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
                     .focused($focusedField, equals: .emailField)
                     
@@ -29,9 +32,9 @@ struct LoginView: View {
                     .focused($focusedField, equals: .passwordField)
             }
             .cardViewStyle()
-            
+//            Spacer()
             VStack {
-                
+
                 HStack {
                     Button {
                         print("Sign Up button \(Thread.current)")
@@ -42,8 +45,8 @@ struct LoginView: View {
                             .foregroundColor(Color("primaryOne"))
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("highlightOne"), in: RoundedRectangle(cornerRadius: 10))
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.secondary, lineWidth: 2))
+                            .background(Color("highlightOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary, lineWidth: 2))
                     }
                     
                     Button {
@@ -67,14 +70,16 @@ struct LoginView: View {
                             .foregroundColor(Color("highlightOne"))
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10))
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.secondary, lineWidth: 2))
+                            .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .overlay(RoundedRectangle(cornerRadius: 10,style: .continuous).stroke(Color.secondary, lineWidth: 2))
                     }
                 }
-                
+
                 Text("Forgot Password ?")
                     .font(.system(.subheadline, design: .default, weight: .semibold))
                     .foregroundColor(Color.secondary)
+                    .padding()
+                
             }
         }
     }
