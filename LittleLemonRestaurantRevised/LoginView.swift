@@ -34,19 +34,14 @@ struct LoginView: View {
             .cardViewStyle()
 //            Spacer()
             VStack {
-
+                
                 HStack {
                     Button {
                         print("Sign Up button \(Thread.current)")
                         
                     } label: {
                         Text("Sign Up")
-                            .font(.headline)
-                            .foregroundColor(Color("primaryOne"))
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color("highlightOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary, lineWidth: 2))
+                            .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
                     }
                     
                     Button {
@@ -66,12 +61,7 @@ struct LoginView: View {
                         }
                     } label: {
                         Text("Log In")
-                            .font(.headline)
-                            .foregroundColor(Color("highlightOne"))
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-                            .overlay(RoundedRectangle(cornerRadius: 10,style: .continuous).stroke(Color.secondary, lineWidth: 2))
+                            .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
                     }
                 }
 

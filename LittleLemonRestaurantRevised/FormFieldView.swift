@@ -33,7 +33,7 @@ struct FormFieldView: View {
                         
                 }
             }
-            .brandFormFieldStyle()
+            .brandFormFieldStyle(fieldColor: subtitleColor)
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled(true)
             .keyboardType(isEmail ? .emailAddress : .default)
