@@ -26,9 +26,9 @@ struct HeaderView: View {
                             .padding()
                             .onTapGesture {
                                 print("Hello")
-                        }
+                            }
                     }
-            }
+                }
         }
     }
 }

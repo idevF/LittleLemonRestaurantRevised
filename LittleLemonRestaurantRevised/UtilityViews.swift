@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+// Brand Form Field Modifier
 struct BrandFormFieldModifier: ViewModifier {
     let fieldColor: Color
     
@@ -26,7 +26,7 @@ extension View {
         modifier(BrandFormFieldModifier(fieldColor: fieldColor))
     }
 }
-
+// Brand Card View Modifier
 struct CardViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -42,7 +42,7 @@ extension View {
         modifier(CardViewModifier())
     }
 }
-
+// Brand Button Modifier
 struct BrandButtonModifier: ViewModifier {
     let foreground: Color
     let background: Color
@@ -54,7 +54,8 @@ struct BrandButtonModifier: ViewModifier {
             .padding()
             .frame(maxWidth: .infinity)
             .background(background, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary, lineWidth: 2))
+//            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary, lineWidth: 2))
+            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(foreground, lineWidth: 2))
     }
 }
 

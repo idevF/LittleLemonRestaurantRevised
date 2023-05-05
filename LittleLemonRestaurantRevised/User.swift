@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct User {
-    let firstName: String
-    let lastName: String
+    var firstName: String
+    var lastName: String
     var emailAddress: String
     var password: String
     let avatar: Image?
