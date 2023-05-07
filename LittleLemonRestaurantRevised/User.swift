@@ -14,15 +14,25 @@ struct User {
     var emailAddress: String
     var password: String
     let avatar: Image?
-    let subscriptions: Subscription
+    var subscriptions: [Subscription]
 
-    struct Subscription {
-        let orderStatus: Bool
-        let passwordChanges: Bool
-        let specialOffers: Bool
-        let newsletter: Bool
+    struct Subscription: Identifiable {
+        let name: SubscribeItems
+        var isSelected: Bool
+        
+        var id: String {
+            self.name.rawValue.lowercased()
+        }
+    }
+    
+    enum SubscribeItems: String {
+        case order = "Order status"
+        case password = "Password changes"
+        case special  = "Special offers"
+        case news = "Newsletter"
     }
     
     static let example = User(firstName: "Tilly", lastName: "Doe", emailAddress: "tdoe@example.com", password: "pass", avatar: Image("avatar"),
-                              subscriptions: Subscription(orderStatus: true, passwordChanges: false, specialOffers: true, newsletter: true))
+                              subscriptions: [Subscription(name: .order, isSelected: true), Subscription(name: .password, isSelected: false), Subscription(name: .special, isSelected: true), Subscription(name: .news, isSelected: false)])
 }
+

@@ -10,15 +10,19 @@ import SwiftUI
 
 final class LoginViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = false
+    @Published var isConnecting: Bool = false
     @Published var error: LoginAPIService.LoginAPIError?
     @Published var user: User = User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass", avatar: Image("sample"),
-                                     subscriptions: User.Subscription(orderStatus: false, passwordChanges: false, specialOffers: false, newsletter: false))
+                                     subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
+    
 
     func checkCredentialsAndLogIn() {
+        isConnecting = true
         LoginAPIService.shared.returnLoginStatus(email: user.emailAddress, password: user.password) { [weak self] (result: Result<Bool, LoginAPIService.LoginAPIError>) in
             switch result {
             case .success(let success):
                 self?.isLoggedIn = success
+                self?.isConnecting = false
                 self?.getLoggedInUserInfo()
             case .failure(let error):
                 self?.error = error
@@ -39,7 +43,7 @@ final class LoginViewModel: ObservableObject {
         
         isLoggedIn = false
         user = User(firstName: "sample", lastName: "sample", emailAddress: "sample", password: "sample", avatar: Image("sample"),
-                         subscriptions: User.Subscription(orderStatus: false, passwordChanges: false, specialOffers: false, newsletter: false))
+                    subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
     }
 
 }

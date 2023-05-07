@@ -12,7 +12,9 @@ struct UserProfileView: View {
 
     var body: some View {
 
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
+            Spacer()
+            
             HeaderView(isLoggedIn: true)
             
             avatarSection
@@ -21,22 +23,23 @@ struct UserProfileView: View {
                 FormFieldView(title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
 
                 FormFieldView(title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
-                
+
                 FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
-                    
+
                 FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
+
+                Spacer()
+                
+                subscriptionsSection
+
             }
-            
-//            Text("Email notifications")
-//                .font(.system(.headline, design: .rounded, weight: .semibold))
-//            Label("Order status", systemImage: "square")
 
-
+            // Log out
             Button {
-                // Log out
-//                loginVM.user.subscriptions.orderStatus.toggle()
+                loginVM.logOut()
             } label: {
                 Text("Log out")
+                    .frame(height: 12)
                     .foregroundColor(Color("primaryOne"))
                     .brandButtonStyle(foreground: Color("secondaryOne"), background: Color("primaryTwo"))
             }
@@ -59,8 +62,8 @@ struct UserProfileView: View {
                 }
    
             }
-//            .padding(.vertical)
-
+            .padding(.vertical, 5)
+//            Spacer()
         }
         .padding()
     }
@@ -70,20 +73,20 @@ struct UserProfileView: View {
         Group {
             Text("Personal Information")
                 .font(.system(.title3, design: .serif, weight: .bold))
-                .foregroundColor(Color("primaryOne"))
-                .padding()
+                .foregroundColor(.primary)
+                .padding(.bottom)
             
             HStack {
                 Image("profile")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 80, height: 80)
                     .clipShape(Circle())
                     .overlay(alignment: .topLeading) {
                         Text("Avatar")
                             .font(.system(.caption, design: .rounded, weight: .medium))
-                            .foregroundColor(.gray.opacity(0.8))
-                            .position(x: 25, y: -5)
+                            .foregroundColor(.secondary)
+                            .position(x: 25, y: -10)
                     }
                     .padding(.trailing)
                 
@@ -91,7 +94,7 @@ struct UserProfileView: View {
                     // change
                 } label: {
                     Text("Change")
-                        .frame(width: 65, height: 10)
+                        .frame(width: 65, height: 5)
                         .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
                         
                 }
@@ -100,10 +103,28 @@ struct UserProfileView: View {
                     // remove
                 } label: {
                     Text("Remove")
-                        .frame(width: 65, height: 10)
+                        .frame(width: 65, height: 5)
                         .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
                 }
                 Spacer()
+            }
+        }
+    }
+    
+    private var subscriptionsSection: some View {
+        Group {
+            Text("Email notifications")
+                .font(.system(.headline, design: .rounded, weight: .semibold))
+            
+            ForEach($loginVM.user.subscriptions) { item in
+                Label(item.wrappedValue.name.rawValue,
+                      systemImage: item.wrappedValue.isSelected ? "square" : "checkmark.square.fill")
+                    .font(.system(.subheadline, design: .rounded, weight: .regular))
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 1.5)) {
+                            item.wrappedValue.isSelected.toggle()
+                        }
+                    }
             }
         }
     }

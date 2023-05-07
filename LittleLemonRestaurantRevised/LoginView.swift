@@ -47,7 +47,7 @@ struct LoginView: View {
                     Button {
                         print("login button \(Thread.current)")
                         print("login button \(loginVM.isLoggedIn)")
-//                        loginVM.checkCredentialsAndLogIn()
+                        loginVM.checkCredentialsAndLogIn()
                         
                         // FocusState logic
                         if loginVM.user.emailAddress.isEmpty {
@@ -64,7 +64,14 @@ struct LoginView: View {
                             .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
                     }
                 }
-
+                
+                if loginVM.isConnecting {
+                    ProgressView("Connecting....")
+                        .progressViewStyle(.circular)
+                        .tint(Color("secondaryOne"))
+                        .foregroundColor(Color("secondaryOne"))                        
+                }
+                
                 Text("Forgot Password ?")
                     .font(.system(.subheadline, design: .default, weight: .semibold))
                     .foregroundColor(Color.secondary)
