@@ -25,10 +25,10 @@ struct LoginView: View {
 //            Spacer()
             VStack(alignment: .leading) {
                 
-                FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
+                FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
                     .focused($focusedField, equals: .emailField)
                     
-                FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
+                FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
                     .focused($focusedField, equals: .passwordField)
             }
             .cardViewStyle()

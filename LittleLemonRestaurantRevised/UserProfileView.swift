@@ -20,13 +20,13 @@ struct UserProfileView: View {
             avatarSection
 
             VStack(alignment: .leading, spacing: 2) {
-                FormFieldView(title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
+                FormFieldView(loginVM: loginVM, title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
 
-                FormFieldView(title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
+                FormFieldView(loginVM: loginVM, title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
 
-                FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
+                FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
 
-                FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
+                FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
 
                 Spacer()
                 
@@ -45,21 +45,30 @@ struct UserProfileView: View {
             }
             
             HStack(spacing: 30) {
+                // Discard changes
                 Button {
-                    // Discard changes
+                    loginVM.discardChanges()
+                    print("discard changes \(Thread.current)")
                 } label: {
                     Text("Discard changes")
                         .frame(width: 135, height: 10)
                         .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
                 }
-
+                // Save changes
                 Button {
-                    // Save changes
+                    loginVM.isSaved.toggle()
                 } label: {
                     Text("Save changes")
                         .frame(width: 135, height: 10)
                         .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
                 }
+                .alert("NOTICE", isPresented: $loginVM.isSaved) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Save", role: .none) { loginVM.saveChanges() }
+                } message: {
+                    Text("Would you like to save changes?")
+                }
+
    
             }
             .padding(.vertical, 5)

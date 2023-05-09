@@ -8,15 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct User {
+struct User: Codable {
     var firstName: String
     var lastName: String
     var emailAddress: String
     var password: String
-    let avatar: Image?
+    let avatar: String
     var subscriptions: [Subscription]
 
-    struct Subscription: Identifiable {
+    struct Subscription: Identifiable, Codable {
         let name: SubscribeItems
         var isSelected: Bool
         
@@ -25,14 +25,14 @@ struct User {
         }
     }
     
-    enum SubscribeItems: String {
+    enum SubscribeItems: String, Codable {
         case order = "Order status"
         case password = "Password changes"
         case special  = "Special offers"
         case news = "Newsletter"
     }
     
-    static let example = User(firstName: "Tilly", lastName: "Doe", emailAddress: "tdoe@example.com", password: "pass", avatar: Image("avatar"),
+    static let example = User(firstName: "Tilly", lastName: "Doe", emailAddress: "tdoe@example.com", password: "pass", avatar: "avatar",
                               subscriptions: [Subscription(name: .order, isSelected: true), Subscription(name: .password, isSelected: false), Subscription(name: .special, isSelected: true), Subscription(name: .news, isSelected: false)])
 }
 
