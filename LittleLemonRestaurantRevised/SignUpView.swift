@@ -10,14 +10,14 @@ import SwiftUI
 struct SignUpView: View {
     @ObservedObject var loginVM: LoginViewModel
     
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: false).padding()
                 .overlay(alignment: .topLeading) {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     } label: {
                         Label("Quit", systemImage: "xmark.app.fill")
                             .foregroundColor(Color("secondaryOne"))
@@ -39,8 +39,6 @@ struct SignUpView: View {
                 
                 FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
                 
-                //            Spacer()
-                
                 subscriptionsSection
             }
             
@@ -49,7 +47,7 @@ struct SignUpView: View {
                 print("Sign In button \(Thread.current)")
                 loginVM.checkCredentialsAndLogIn()
                 loginVM.isSignUp.toggle()
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             } label: {
                 Text("Sign In")
                     .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))

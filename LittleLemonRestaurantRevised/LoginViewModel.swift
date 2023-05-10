@@ -13,6 +13,7 @@ final class LoginViewModel: ObservableObject {
     @Published var isConnecting: Bool = false
     @Published var isSaved: Bool = false
     @Published var isSignUp: Bool = false
+    @Published var isForgotPassword: Bool = false
     @Published var error: LoginAPIService.LoginAPIError?
     @Published var user: User = User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass", avatar: "sample",
                                      subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])

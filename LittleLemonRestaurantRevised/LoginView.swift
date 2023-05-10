@@ -80,6 +80,14 @@ struct LoginView: View {
                     .font(.system(.subheadline, design: .default, weight: .semibold))
                     .foregroundColor(Color.secondary)
                     .padding()
+                    .onTapGesture {
+                        loginVM.isForgotPassword.toggle()
+                    }
+                    .sheet(isPresented: $loginVM.isForgotPassword) {
+                        ForgotPasswordView(loginVM: loginVM)
+                            .presentationDetents([.medium])
+                            .presentationDragIndicator(.visible)
+                    }
                 
             }
         }

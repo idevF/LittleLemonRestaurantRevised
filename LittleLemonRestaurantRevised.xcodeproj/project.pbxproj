@@ -12,6 +12,7 @@
 		A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223C7922A016CAB0082A28D /* LoginAPIService.swift */; };
 		A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223C7942A016E930082A28D /* LoginViewModel.swift */; };
 		A23BF0072A02549A00A8FF2C /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23BF0062A02549A00A8FF2C /* UtilityViews.swift */; };
+		A264A0472A0B91A400E3F346 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A264A0462A0B91A400E3F346 /* ForgotPasswordView.swift */; };
 		A26E3FDD2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */; };
 		A26E3FDF2A0157B50018732A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E3FDE2A0157B50018732A /* ContentView.swift */; };
 		A26E3FE12A0157B60018732A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A26E3FE02A0157B60018732A /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		A223C7922A016CAB0082A28D /* LoginAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIService.swift; sourceTree = "<group>"; };
 		A223C7942A016E930082A28D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A23BF0062A02549A00A8FF2C /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+		A264A0462A0B91A400E3F346 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		A26E3FD92A0157B50018732A /* LittleLemonRestaurantRevised.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemonRestaurantRevised.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonRestaurantRevisedApp.swift; sourceTree = "<group>"; };
 		A26E3FDE2A0157B50018732A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				A29F018A2A02A14C001505FE /* HeroView.swift */,
 				A20547762A0275990045E9DF /* FormFieldView.swift */,
 				A2F074082A0218D700B7DA66 /* LoginView.swift */,
+				A264A0462A0B91A400E3F346 /* ForgotPasswordView.swift */,
 				A2D974602A0AB05500DA5510 /* SignUpView.swift */,
 				A223C7942A016E930082A28D /* LoginViewModel.swift */,
 				A223C7922A016CAB0082A28D /* LoginAPIService.swift */,
@@ -175,6 +178,7 @@
 				A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */,
 				A2BD5C6B2A03CADF002BA035 /* UserProfileView.swift in Sources */,
 				A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */,
+				A264A0472A0B91A400E3F346 /* ForgotPasswordView.swift in Sources */,
 				A26E3FDF2A0157B50018732A /* ContentView.swift in Sources */,
 				A26E3FDD2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift in Sources */,
 				A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */,
