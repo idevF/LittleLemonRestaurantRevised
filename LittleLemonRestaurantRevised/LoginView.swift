@@ -20,9 +20,9 @@ struct LoginView: View {
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: loginVM.isLoggedIn)
-//            Spacer()
+            Spacer()
             HeroView(isLoggedIn: loginVM.isLoggedIn)
-//            Spacer()
+            Spacer()
             VStack(alignment: .leading) {
                 
                 FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
@@ -32,16 +32,20 @@ struct LoginView: View {
                     .focused($focusedField, equals: .passwordField)
             }
             .cardViewStyle()
-//            Spacer()
+            Spacer()
             VStack {
                 
                 HStack {
+                    // Sign Up button
                     Button {
                         print("Sign Up button \(Thread.current)")
-                        
+                        loginVM.isSignUp.toggle()
                     } label: {
                         Text("Sign Up")
                             .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
+                    }
+                    .sheet(isPresented: $loginVM.isSignUp) {
+                        SignUpView(loginVM: loginVM)
                     }
                     
                     Button {

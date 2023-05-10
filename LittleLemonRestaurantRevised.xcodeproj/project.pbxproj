@@ -19,6 +19,7 @@
 		A26E3FEB2A0157FB0018732A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E3FEA2A0157FB0018732A /* User.swift */; };
 		A29F018B2A02A14C001505FE /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29F018A2A02A14C001505FE /* HeroView.swift */; };
 		A2BD5C6B2A03CADF002BA035 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD5C6A2A03CADF002BA035 /* UserProfileView.swift */; };
+		A2D974612A0AB05600DA5510 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D974602A0AB05500DA5510 /* SignUpView.swift */; };
 		A2F074092A0218D700B7DA66 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F074082A0218D700B7DA66 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		A26E3FEA2A0157FB0018732A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A29F018A2A02A14C001505FE /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
 		A2BD5C6A2A03CADF002BA035 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		A2D974602A0AB05500DA5510 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		A2F074082A0218D700B7DA66 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 				A29F018A2A02A14C001505FE /* HeroView.swift */,
 				A20547762A0275990045E9DF /* FormFieldView.swift */,
 				A2F074082A0218D700B7DA66 /* LoginView.swift */,
+				A2D974602A0AB05500DA5510 /* SignUpView.swift */,
 				A223C7942A016E930082A28D /* LoginViewModel.swift */,
 				A223C7922A016CAB0082A28D /* LoginAPIService.swift */,
 				A26E3FEA2A0157FB0018732A /* User.swift */,
@@ -168,6 +171,7 @@
 				A20547772A0275990045E9DF /* FormFieldView.swift in Sources */,
 				A29F018B2A02A14C001505FE /* HeroView.swift in Sources */,
 				A2F074092A0218D700B7DA66 /* LoginView.swift in Sources */,
+				A2D974612A0AB05600DA5510 /* SignUpView.swift in Sources */,
 				A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */,
 				A2BD5C6B2A03CADF002BA035 /* UserProfileView.swift in Sources */,
 				A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */,
