@@ -12,6 +12,9 @@ struct SignUpView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @State private var showAlert: Bool = false
+    @State private var showSignInAlert: Bool = false
+    
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: false).padding()
@@ -42,15 +45,27 @@ struct SignUpView: View {
                 subscriptionsSection
             }
             
-            // Sign Up button
+            // Sign In button
             Button {
                 print("Sign In button \(Thread.current)")
-                loginVM.checkCredentialsAndLogIn()
-                loginVM.isSignUp.toggle()
-                dismiss()
+                if loginVM.areFieldsValid {
+                    showSignInAlert.toggle()
+                } else {
+                    showAlert.toggle()
+                }
             } label: {
                 Text("Sign In")
                     .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
+            }
+            .alert("MISSING INFORMATION", isPresented: $showAlert) {
+                Button("Try Again") { }
+            } message: {
+                Text("Please fill all the required form fields!")
+            }
+            .alert("CONGRATS!", isPresented: $showSignInAlert) {
+                Button("OK") { dismiss() }
+            } message: {
+                Text("A confirmation message has sent to your e-mail address. Please confirm the link in the message to login!")
             }
         }
         .padding()

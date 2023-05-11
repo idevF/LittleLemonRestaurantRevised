@@ -13,6 +13,7 @@ struct ForgotPasswordView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var showAlert: Bool = false
+    @State private var showResetAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -34,16 +35,24 @@ struct ForgotPasswordView: View {
             // Reset Password button
             Button {
                 print("Reset button \(Thread.current)")
-                showAlert.toggle()
+                if loginVM.areFieldsValid {
+                    showResetAlert.toggle()
+                } else {
+                    showAlert.toggle()
+                }
             } label: {
                 Text("Reset Password")
                     .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
             }
-            .alert("Would you like to Reset Your Password?", isPresented: $showAlert) {
+            .alert("MISSING INFORMATION", isPresented: $showAlert) {
+                Button("Try Again") { }
+            } message: {
+                Text("Please fill all the required form fields!")
+            }
+            .alert("Would you like to Reset Your Password?", isPresented: $showResetAlert) {
                 Button("Cancel", role: .cancel) { dismiss() }
                 Button("Reset", role: .none) {
                     loginVM.isForgotPassword.toggle()
-                    dismiss()
                 }
             } message: {
                 Text("We will send you a link to your e-mail address for resetting your password.\n Please check your e-mail!")

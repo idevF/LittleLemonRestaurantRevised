@@ -14,12 +14,16 @@ final class LoginViewModel: ObservableObject {
     @Published var isSaved: Bool = false
     @Published var isSignUp: Bool = false
     @Published var isForgotPassword: Bool = false
+    @Published var isError: Bool = false
+
     @Published var error: LoginAPIService.LoginAPIError?
-    @Published var user: User = User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass", avatar: "sample",
-                                     subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
-    
+    @Published var user: User = LoginViewModel.noUser
+
+//    User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass", avatar: "sample",
+//                                     subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
 
     func checkCredentialsAndLogIn() {
+        guard areFieldsValid else { return }
         isConnecting = true
         LoginAPIService.shared.returnLoginStatus(email: user.emailAddress, password: user.password) { [weak self] (result: Result<Bool, LoginAPIService.LoginAPIError>) in
             switch result {
@@ -29,15 +33,17 @@ final class LoginViewModel: ObservableObject {
                 self?.getLoggedInUserInfo()
             case .failure(let error):
                 self?.error = error
+                self?.isConnecting = false
+                self?.isError = true
             }
         }
     }
     
-    private func getLoggedInUserInfo() { 
+    func getLoggedInUserInfo() {
         guard isLoggedIn else { return }
         
-        LoginAPIService.shared.returnLoggedInUserInfo { [weak self] (loggedInuser) in
-            self?.user = loggedInuser
+        LoginAPIService.shared.returnLoggedInUserInfo { [weak self] (returnedUser) in
+            self?.user = returnedUser
         }
     }
     
@@ -45,13 +51,12 @@ final class LoginViewModel: ObservableObject {
         guard isLoggedIn else { return }
         
         isLoggedIn = false
-        user = User(firstName: "sample", lastName: "sample", emailAddress: "sample", password: "sample", avatar: "sample",
-                    subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
+        user = LoginViewModel.noUser
     }
     
     func saveChanges() -> Data? {
-        guard isValid(name: user.firstName) && isValid(name: user.lastName) && isValid(email: user.emailAddress) && isValid(password: user.password) else { return nil }
-        isSaved = true
+        guard areFieldsValid else { return nil }
+//        isSaved = true
         let savedUser = user
         do {
             let jsonUser = try JSONEncoder().encode(savedUser)
@@ -67,6 +72,19 @@ final class LoginViewModel: ObservableObject {
         getLoggedInUserInfo()
         isSaved = false
     }
+    
+    var areFieldsValid: Bool {
+        if isValid(email: user.emailAddress) && isValid(password: user.password) && !isSignUp{
+            return true
+        } else if isValid(name: user.lastName) && isValid(email: user.emailAddress) && isForgotPassword {
+            return true
+        } else if isValid(name: user.firstName) && isValid(name: user.lastName) && isValid(email: user.emailAddress) && isValid(password: user.password) && isSignUp || isLoggedIn {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     
     func isValid(name: String) -> Bool {
         guard !name.isEmpty else { return false }
@@ -91,4 +109,7 @@ final class LoginViewModel: ObservableObject {
         let passwordValidationPredicate = NSPredicate(format: "SELF MATCHES %@", passwordValidationRegex)
         return passwordValidationPredicate.evaluate(with: password)
     }
+    
+    static let noUser = User(firstName: "", lastName: "", emailAddress: "", password: "", avatar: "",
+                        subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
 }

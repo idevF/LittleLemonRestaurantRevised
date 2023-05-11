@@ -9,6 +9,8 @@ import SwiftUI
 
 struct UserProfileView: View {
     @ObservedObject var loginVM: LoginViewModel
+    
+    @State private var showAlert: Bool = false
 
     var body: some View {
 
@@ -56,11 +58,21 @@ struct UserProfileView: View {
                 }
                 // Save changes
                 Button {
-                    loginVM.isSaved.toggle()
+                    if loginVM.areFieldsValid {
+                        loginVM.isSaved.toggle()
+                    } else {
+                        showAlert.toggle()
+                    }
+                    print(loginVM.areFieldsValid)
                 } label: {
                     Text("Save changes")
                         .frame(width: 135, height: 10)
                         .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
+                }
+                .alert("MISSING INFORMATION", isPresented: $showAlert) {
+                    Button("Try Again") { }
+                } message: {
+                    Text("Please fill all the required form fields!")
                 }
                 .alert("NOTICE", isPresented: $loginVM.isSaved) {
                     Button("Cancel", role: .cancel) { }

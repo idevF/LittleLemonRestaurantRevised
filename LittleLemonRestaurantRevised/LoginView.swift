@@ -17,6 +17,8 @@ struct LoginView: View {
     
     @FocusState private var focusedField: Field?
     
+    @State private var showAlert: Bool = false
+    
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: loginVM.isLoggedIn)
@@ -32,9 +34,18 @@ struct LoginView: View {
                     .focused($focusedField, equals: .passwordField)
             }
             .cardViewStyle()
+
+            if loginVM.isConnecting {
+                ProgressView("Connecting....")
+                    .progressViewStyle(.circular)
+                    .tint(Color("secondaryOne"))
+                    .foregroundColor(Color("secondaryOne"))
+            }
+            
             Spacer()
+            
             VStack {
-                
+
                 HStack {
                     // Sign Up button
                     Button {
@@ -47,11 +58,16 @@ struct LoginView: View {
                     .sheet(isPresented: $loginVM.isSignUp) {
                         SignUpView(loginVM: loginVM)
                     }
-                    
+                    // Log In button
                     Button {
                         print("login button \(Thread.current)")
-                        print("login button \(loginVM.isLoggedIn)")
-                        loginVM.checkCredentialsAndLogIn()
+                        print("fields valid \(loginVM.areFieldsValid)")
+                        if loginVM.areFieldsValid {
+                            loginVM.checkCredentialsAndLogIn()
+
+                        } else {
+                            showAlert.toggle()
+                        }
                         
                         // FocusState logic
                         if loginVM.user.emailAddress.isEmpty {
@@ -67,13 +83,14 @@ struct LoginView: View {
                         Text("Log In")
                             .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
                     }
-                }
-                
-                if loginVM.isConnecting {
-                    ProgressView("Connecting....")
-                        .progressViewStyle(.circular)
-                        .tint(Color("secondaryOne"))
-                        .foregroundColor(Color("secondaryOne"))                        
+                    .alert("MISSING INFORMATION", isPresented: $showAlert) {
+                        Button("Try Again") { }
+                    } message: {
+                        Text("Please fill all the required form fields!")
+                    }
+                    .alert(isPresented: $loginVM.isError, error: loginVM.error) {
+                        Button("Try Again") { }
+                    }
                 }
                 
                 Text("Forgot Password ?")
