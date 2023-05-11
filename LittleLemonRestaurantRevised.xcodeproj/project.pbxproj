@@ -11,6 +11,9 @@
 		A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F265C2A03A84E00AB96CE /* HeaderView.swift */; };
 		A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223C7922A016CAB0082A28D /* LoginAPIService.swift */; };
 		A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223C7942A016E930082A28D /* LoginViewModel.swift */; };
+		A2321B622A0D0C7600B3672F /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2321B612A0D0C7600B3672F /* MenuModel.swift */; };
+		A2321B642A0D0E7C00B3672F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2321B632A0D0E7C00B3672F /* MenuView.swift */; };
+		A2321B662A0D0F0B00B3672F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2321B652A0D0F0B00B3672F /* MenuViewModel.swift */; };
 		A23BF0072A02549A00A8FF2C /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23BF0062A02549A00A8FF2C /* UtilityViews.swift */; };
 		A264A0472A0B91A400E3F346 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A264A0462A0B91A400E3F346 /* ForgotPasswordView.swift */; };
 		A26E3FDD2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */; };
@@ -29,6 +32,9 @@
 		A21F265C2A03A84E00AB96CE /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A223C7922A016CAB0082A28D /* LoginAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIService.swift; sourceTree = "<group>"; };
 		A223C7942A016E930082A28D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A2321B612A0D0C7600B3672F /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		A2321B632A0D0E7C00B3672F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		A2321B652A0D0F0B00B3672F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		A23BF0062A02549A00A8FF2C /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
 		A264A0462A0B91A400E3F346 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		A26E3FD92A0157B50018732A /* LittleLemonRestaurantRevised.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemonRestaurantRevised.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */,
+				A2321B612A0D0C7600B3672F /* MenuModel.swift */,
+				A2321B652A0D0F0B00B3672F /* MenuViewModel.swift */,
+				A2321B632A0D0E7C00B3672F /* MenuView.swift */,
 				A2AE1F372A0CF82C003043CE /* LOGIN */,
 				A26E3FE02A0157B60018732A /* Assets.xcassets */,
 				A26E3FE22A0157B60018732A /* Preview Content */,
@@ -220,9 +229,12 @@
 				A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */,
 				A264A0472A0B91A400E3F346 /* ForgotPasswordView.swift in Sources */,
 				A26E3FDF2A0157B50018732A /* ContentView.swift in Sources */,
+				A2321B642A0D0E7C00B3672F /* MenuView.swift in Sources */,
+				A2321B622A0D0C7600B3672F /* MenuModel.swift in Sources */,
 				A26E3FDD2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift in Sources */,
 				A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */,
 				A26E3FEB2A0157FB0018732A /* User.swift in Sources */,
+				A2321B662A0D0F0B00B3672F /* MenuViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
