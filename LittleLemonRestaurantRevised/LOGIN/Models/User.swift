@@ -32,7 +32,7 @@ struct User: Codable {
         case news = "Newsletter"
     }
     
-    static let example = User(firstName: "Tilly", lastName: "Doe", emailAddress: "tdoe@example.com", password: "pass", avatar: "avatar",
+    static let example = User(firstName: "Tilly", lastName: "Doe", emailAddress: "tdoe@example.com", password: "pass2Bbb", avatar: "avatar",
                               subscriptions: [Subscription(name: .order, isSelected: true), Subscription(name: .password, isSelected: false), Subscription(name: .special, isSelected: true), Subscription(name: .news, isSelected: false)])
 }
 

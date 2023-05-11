@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 // Brand Form Field Modifier
 struct BrandFormFieldModifier: ViewModifier {
     let fieldColor: Color

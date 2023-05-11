@@ -19,7 +19,7 @@ final class LoginViewModel: ObservableObject {
     @Published var error: LoginAPIService.LoginAPIError?
     @Published var user: User = LoginViewModel.noUser
 
-//    User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass", avatar: "sample",
+//    User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass2Bbb", avatar: "sample",
 //                                     subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
 
     func checkCredentialsAndLogIn() {

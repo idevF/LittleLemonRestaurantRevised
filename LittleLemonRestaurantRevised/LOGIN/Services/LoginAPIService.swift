@@ -17,7 +17,7 @@ final class LoginAPIService {
     
     func returnLoginStatus(email: String, password: String, completionHandler: @escaping (Result<Bool, LoginAPIError>) -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            if email == "tdoe@example.com" && password == "pass" {
+            if email == "tdoe@example.com" && password == "pass2Bbb" {
                 self.user = User.example
                 completionHandler(.success(true))
             } else {

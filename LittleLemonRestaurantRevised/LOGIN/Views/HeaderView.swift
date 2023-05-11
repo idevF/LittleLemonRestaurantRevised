@@ -25,7 +25,7 @@ struct HeaderView: View {
                             .frame(width: 45, height: 45)
                             .padding()
                             .onTapGesture {
-                                print("Hello")
+//                                print("headerview")
                             }
                     }
                 }

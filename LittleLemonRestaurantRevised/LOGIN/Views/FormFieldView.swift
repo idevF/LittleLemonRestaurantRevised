@@ -21,9 +21,7 @@ struct FormFieldView: View {
     var body: some View {
         Group {
             headerOfTheFormField
-            
             formField
-
             footerAndValidateFormEntry
         }
         .padding(.vertical, 0)
@@ -44,7 +42,6 @@ struct FormFieldView: View {
                     .textContentType(isEmail ? .emailAddress :
                                         isGivenName ? .givenName : .familyName)
                     .submitLabel(.continue)
-                    
             }
         }
         .brandFormFieldStyle(fieldColor: subtitleColor)
@@ -79,30 +76,6 @@ struct FormFieldView: View {
         .fixedSize(horizontal: false, vertical: true)
 
     }
-    
-//    private func isValid(name: String) -> Bool {
-//        guard !name.isEmpty else { return false }
-//        for chr in name {
-//            if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") && !(chr == " ") ) {
-//                return false
-//            }
-//        }
-//        return true
-//    }
-//    
-//    private func isValid(email: String) -> Bool {
-//        guard !email.isEmpty else { return false }
-//        let emailValidationRegex = "^[\\p{L}0-9!#$%&'*+\\/=?^_`{|}~-][\\p{L}0-9.!#$%&'*+\\/=?^_`{|}~-]{0,63}@[\\p{L}0-9-]+(?:\\.[\\p{L}0-9-]{2,7})*$"
-//        let emailValidationPredicate = NSPredicate(format: "SELF MATCHES %@", emailValidationRegex)
-//        return emailValidationPredicate.evaluate(with: email)
-//    }
-//    
-//    private func isValid(password: String) -> Bool {
-//        guard !password.isEmpty else { return false }
-//        let passwordValidationRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$"
-//        let passwordValidationPredicate = NSPredicate(format: "SELF MATCHES %@", passwordValidationRegex)
-//        return passwordValidationPredicate.evaluate(with: password)
-//    }
 }
 
 struct FormFieldView_Previews: PreviewProvider {
