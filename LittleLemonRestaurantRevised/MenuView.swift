@@ -22,27 +22,21 @@ struct MenuView: View {
                     .foregroundColor(Color("secondaryOne"))
             }
 
+            Text("ORDER FOR DELIVERY!")
+                .font(.system(.title3, design: .rounded, weight: .heavy))
+                .foregroundColor(Color.primary)
+            Divider()
             
             List {
                 ForEach(menuViewModel.menu) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.title)
-
-                            Text(item.description)
-         
-                            Text(item.price)
-                    
-                        }
-
-                    }
+                    MenuRowView(item: item)
                 }
             }
             .listStyle(.plain)
             .task {
                 await menuViewModel.fetchJSONMenu()
             }
-            .alert("Menu Loading Error!", isPresented: $menuViewModel.showErrorAlert) {
+            .alert("Menu Error", isPresented: $menuViewModel.showErrorAlert) {
                 Button("OK") { }
             } message: {
                 if let errorMessage = menuViewModel.errorMessage {
