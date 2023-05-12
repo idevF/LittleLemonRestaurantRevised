@@ -14,7 +14,8 @@ struct ContentView: View {
         if loginVM.isLoggedIn {
             UserProfileView(loginVM: loginVM)
         } else {
-            LoginView(loginVM: loginVM)
+//            LoginView(loginVM: loginVM)
+            MenuView()
         }
     }
 }
