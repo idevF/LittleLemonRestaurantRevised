@@ -25,21 +25,8 @@ struct MenuRowView: View {
             
             Spacer()
 
-            AsyncImage(url: URL(string: item.image)) { phase in
-                if let image = phase.image {
-                    image // Displays the loaded image.
-                        .resizable()
-                        .aspectRatio(1, contentMode: .fit)
-                } else if phase.error != nil {
-                    Text("There was an error loading the image.")
-                        .font(.system(.footnote, design: .rounded, weight: .ultraLight))
-                } else {
-                    ProgressView()
-                        .tint(Color("secondaryOne"))
-                }
-            }
-            .frame(width: 75, height: 75)
-            .padding(.leading)
+          AsyncImageView(item: item)
+                .frame(width: 75, height: 75)
         }
     }
 }

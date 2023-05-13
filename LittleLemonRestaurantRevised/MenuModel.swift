@@ -32,7 +32,7 @@ import Foundation
 struct JSONMenu: Codable {
     let menu: [MenuItem]
     
-    struct MenuItem: Codable, Identifiable {
+    struct MenuItem: Codable, Identifiable, Hashable {
         let id: Int
         let title: String
         let description: String
@@ -49,8 +49,8 @@ struct JSONMenu: Codable {
             case menuCategory = "category"
         }
         
-        #if DEBUG
-        static let example = MenuItem(id: 2, title: "Lemon Desert", description: "Traditional homemade Italian Lemon Ricotta Cake.", price: "10", image: "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", menuCategory: "desserts")
-        #endif
+        
+        static let example = MenuItem(id: 4, title: "Pasta", description: "Penne with fried aubergines, cherry tomatoes, tomato sauce, fresh chilli, garlic, basil & salted ricotta cheese.", price: "10", image: "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/pasta.jpg?raw=true", menuCategory: "mains")
     }
 }
+

@@ -29,7 +29,9 @@ struct MenuView: View {
             
             List {
                 ForEach(menuViewModel.menu) { item in
-                    MenuRowView(item: item)
+                    NavigationLink(value: item) {
+                        MenuRowView(item: item)
+                    }
                 }
             }
             .listStyle(.plain)
@@ -43,8 +45,15 @@ struct MenuView: View {
                     Text(errorMessage)
                 }
             }
+            .navigationDestination(for: JSONMenu.MenuItem.self) { item in
+               MenuRowDetailView(item: item)
 
+            }
+            .scrollIndicators(.hidden)
+
+//            .navigationTitle("")
         }
+        
     }
 }
 

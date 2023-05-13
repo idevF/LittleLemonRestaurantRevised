@@ -91,13 +91,13 @@ struct UserProfileView: View {
             Text("Email notifications")
                 .font(.system(.headline, design: .rounded, weight: .semibold))
             
-            ForEach($loginVM.user.subscriptions) { item in
-                Label(item.wrappedValue.name.rawValue,
-                      systemImage: item.wrappedValue.isSelected ? "square" : "checkmark.square.fill")
+            ForEach($loginVM.user.subscriptions) { $item in
+                Label(item.name.rawValue,
+                      systemImage: item.isSelected ? "checkmark.square.fill" : "square")
                     .font(.system(.subheadline, design: .rounded, weight: .regular))
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 1.5)) {
-                            item.wrappedValue.isSelected.toggle()
+                            item.isSelected.toggle()
                         }
                     }
             }
