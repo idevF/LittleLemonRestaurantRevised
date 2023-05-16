@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+@MainActor
 final class MenuViewModel: ObservableObject {
     @Published var menu: [JSONMenu.MenuItem] = []
     @Published var isLoading: Bool = false
@@ -14,12 +14,13 @@ final class MenuViewModel: ObservableObject {
     @Published var showErrorAlert: Bool = false
     @Published var errorMessage: String?
     
+    @Published var isButtonPressed: Bool = false
     
-    @MainActor
+    
     func fetchJSONMenu() async {
         let apiService = MenuAPIService()
         isLoading.toggle()
-
+        
         do {
             defer {
                 isLoading.toggle()
@@ -31,5 +32,18 @@ final class MenuViewModel: ObservableObject {
             errorMessage = error.localizedDescription + "\n Please inform the developer with the screen shot of the error message."
         }
     }
+    
+    func filtered(item: String) {
+        
+        if isButtonPressed {
+            self.menu = menu.map({$0}).filter({ $0.menuCategory.lowercased() == item.lowercased() })
+        } else {
+            Task(priority: .background) {
+                await fetchJSONMenu()
+            }
+        }
+    }
+    
+    
 }
 

@@ -17,10 +17,10 @@ struct MenuRowDetailView: View {
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: true)
-           
-           AsyncImageView(item: item)
+            
+            AsyncImageView(item: item)
                 .padding(.vertical)
-
+            
             
             VStack(alignment: .leading) {
                 Text(item.description)
@@ -30,7 +30,7 @@ struct MenuRowDetailView: View {
             }
             .font(.system(.subheadline, design: .serif, weight: .semibold))
             .foregroundColor(Color.secondary)
-
+            
             
             VStack {
                 Stepper("order \(quantity)", value: $quantity, in: 1...20)
@@ -69,7 +69,7 @@ struct MenuRowDetailView: View {
     var itemTotal: Double {
         return (Double(item.price) ?? 0) * Double(quantity)
     }
-        
+    
 }
 
 struct MenuRowDetailView_Previews: PreviewProvider {

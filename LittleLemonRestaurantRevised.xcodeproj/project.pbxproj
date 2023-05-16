@@ -24,7 +24,9 @@
 		A26E3FE42A0157B60018732A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A26E3FE32A0157B60018732A /* Preview Assets.xcassets */; };
 		A26E3FEB2A0157FB0018732A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E3FEA2A0157FB0018732A /* User.swift */; };
 		A2844A492A0DF22700B6B468 /* MenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2844A482A0DF22700B6B468 /* MenuRowView.swift */; };
+		A29942BC2A0FC7DE00C5B580 /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29942BB2A0FC7DE00C5B580 /* MenuCategory.swift */; };
 		A29F018B2A02A14C001505FE /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29F018A2A02A14C001505FE /* HeroView.swift */; };
+		A2AF01342A13B5A700315877 /* MenuBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF01332A13B5A700315877 /* MenuBreakdownView.swift */; };
 		A2BD5C6B2A03CADF002BA035 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BD5C6A2A03CADF002BA035 /* UserProfileView.swift */; };
 		A2D974612A0AB05600DA5510 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D974602A0AB05500DA5510 /* SignUpView.swift */; };
 		A2EF4C9E2A0E295900C9373E /* MenuRowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EF4C9D2A0E295900C9373E /* MenuRowDetailView.swift */; };
@@ -50,7 +52,9 @@
 		A26E3FE32A0157B60018732A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A26E3FEA2A0157FB0018732A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2844A482A0DF22700B6B468 /* MenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRowView.swift; sourceTree = "<group>"; };
+		A29942BB2A0FC7DE00C5B580 /* MenuCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
 		A29F018A2A02A14C001505FE /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
+		A2AF01332A13B5A700315877 /* MenuBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBreakdownView.swift; sourceTree = "<group>"; };
 		A2BD5C6A2A03CADF002BA035 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		A2D974602A0AB05500DA5510 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		A2EF4C9D2A0E295900C9373E /* MenuRowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRowDetailView.swift; sourceTree = "<group>"; };
@@ -89,8 +93,10 @@
 			children = (
 				A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */,
 				A2321B612A0D0C7600B3672F /* MenuModel.swift */,
+				A29942BB2A0FC7DE00C5B580 /* MenuCategory.swift */,
 				A2321B652A0D0F0B00B3672F /* MenuViewModel.swift */,
 				A2321B632A0D0E7C00B3672F /* MenuView.swift */,
+				A2AF01332A13B5A700315877 /* MenuBreakdownView.swift */,
 				A2844A482A0DF22700B6B468 /* MenuRowView.swift */,
 				A2EF4C9D2A0E295900C9373E /* MenuRowDetailView.swift */,
 				A22CC09F2A0FA9C9000ABC0B /* AsyncImageView.swift */,
@@ -241,6 +247,7 @@
 				A2D974612A0AB05600DA5510 /* SignUpView.swift in Sources */,
 				A223C7932A016CAB0082A28D /* LoginAPIService.swift in Sources */,
 				A2EF4C9E2A0E295900C9373E /* MenuRowDetailView.swift in Sources */,
+				A29942BC2A0FC7DE00C5B580 /* MenuCategory.swift in Sources */,
 				A2BD5C6B2A03CADF002BA035 /* UserProfileView.swift in Sources */,
 				A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */,
 				A264A0472A0B91A400E3F346 /* ForgotPasswordView.swift in Sources */,
@@ -248,6 +255,7 @@
 				A2321B642A0D0E7C00B3672F /* MenuView.swift in Sources */,
 				A2321B622A0D0C7600B3672F /* MenuModel.swift in Sources */,
 				A26E3FDD2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift in Sources */,
+				A2AF01342A13B5A700315877 /* MenuBreakdownView.swift in Sources */,
 				A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */,
 				A26E3FEB2A0157FB0018732A /* User.swift in Sources */,
 				A2321B662A0D0F0B00B3672F /* MenuViewModel.swift in Sources */,

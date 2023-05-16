@@ -14,23 +14,17 @@ struct MenuView: View {
         NavigationStack {
             HeaderView(isLoggedIn: true)
             HeroView(isLoggedIn: true)
+                .padding(.horizontal)
+                .overlay(alignment: .bottom, content: { progressView })
+            MenuBreakdownView(menuViewModel: menuViewModel)
             
-            if menuViewModel.isLoading {
-                ProgressView("Loading....")
-                    .progressViewStyle(.circular)
-                    .tint(Color("secondaryOne"))
-                    .foregroundColor(Color("secondaryOne"))
-            }
-
-            Text("ORDER FOR DELIVERY!")
-                .font(.system(.title3, design: .rounded, weight: .heavy))
-                .foregroundColor(Color.primary)
             Divider()
             
             List {
                 ForEach(menuViewModel.menu) { item in
                     NavigationLink(value: item) {
                         MenuRowView(item: item)
+                        
                     }
                 }
             }
@@ -46,19 +40,29 @@ struct MenuView: View {
                 }
             }
             .navigationDestination(for: JSONMenu.MenuItem.self) { item in
-               MenuRowDetailView(item: item)
-
+                MenuRowDetailView(item: item)
             }
             .scrollIndicators(.hidden)
-
-//            .navigationTitle("")
+            .onDisappear { menuViewModel.isButtonPressed = false }
         }
-        
     }
 }
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
+    }
+}
+
+extension MenuView {
+    private var progressView: some View {
+        Group {
+            if menuViewModel.isLoading {
+                ProgressView("Loading....")
+                    .progressViewStyle(.circular)
+                    .tint(Color("secondaryOne"))
+                    .foregroundColor(Color("secondaryOne"))
+            }
+        }
     }
 }

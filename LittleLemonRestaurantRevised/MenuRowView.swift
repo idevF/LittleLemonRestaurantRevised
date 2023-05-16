@@ -24,8 +24,8 @@ struct MenuRowView: View {
             .lineLimit(2)
             
             Spacer()
-
-          AsyncImageView(item: item)
+            
+            AsyncImageView(item: item)
                 .frame(width: 75, height: 75)
         }
     }
