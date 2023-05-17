@@ -16,7 +16,9 @@ final class MenuViewModel: ObservableObject {
     
     @Published var isButtonPressed: Bool = false
     
-    @Published var searchText: String = "" 
+    @Published var searchText: String = ""
+    
+    @Published var ordersList: [Order] = [] // [Order(title: "Fish", price: "10", quantity: 2, total: 20.0), Order(title: "Grilled Fish", price: "10", quantity: 2, total:20.0), Order(title: "Lemon Dessert", price: "10", quantity: 3, total:30.0)]
     
     func fetchJSONMenu() async {
         let apiService = MenuAPIService()
@@ -55,5 +57,17 @@ final class MenuViewModel: ObservableObject {
         }
     }
     
+    func addOrder(title: String, price: String, quantity: Int, total: Double) {
+        let order = Order(title: title, price: price, quantity: quantity, total: total)
+        ordersList.append(order)
+    }
+    
+    var grandTotal: Double {
+        if ordersList.count > 0 {
+            return ordersList.reduce(0) { $0 + $1.total }
+        } else {
+            return 0
+        }
+    }
 }
 

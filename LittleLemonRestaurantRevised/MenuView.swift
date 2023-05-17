@@ -43,7 +43,7 @@ struct MenuView: View {
                 }
             }
             .navigationDestination(for: JSONMenu.MenuItem.self) { item in
-                MenuRowDetailView(item: item)
+                MenuRowDetailView(item: item, menuViewModel: menuViewModel)
             }
             .scrollIndicators(.hidden)
             .onDisappear {

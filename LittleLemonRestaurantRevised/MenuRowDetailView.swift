@@ -10,9 +10,11 @@ import SwiftUI
 struct MenuRowDetailView: View {
     let item: JSONMenu.MenuItem
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var menuViewModel: MenuViewModel
     
     @State private var quantity: Int = 1
     @State private var showAlert: Bool = false
+    @State private var showSheet: Bool = false
     
     var body: some View {
         VStack {
@@ -41,20 +43,25 @@ struct MenuRowDetailView: View {
                     .padding(10)
                 
                 Button {
+                    menuViewModel.addOrder(title: item.title, price: item.price, quantity: quantity, total: itemTotal)
                     showAlert.toggle()
                 } label: {
                     Text("Add to cart for \(itemTotal, format: .currency(code: "USD"))")
                         .frame(height: 10)
                         .foregroundColor(Color("primaryOne"))
-                        .brandButtonStyle(foreground: .clear, background: Color("primaryTwo"))
+                        .brandButtonStyle(foreground: Color.clear, background: Color("primaryTwo"))
                 }
                 .alert("ORDER INFO", isPresented: $showAlert) {
                     Button("Back to Menu") { dismiss() }
-                    Button("Go to cart") { }
+                    Button("Show Order Summary") { showSheet.toggle() }
                 } message: {
                     Text("Your order has been added to the cart!")
                 }
-                
+                .sheet(isPresented: $showSheet) {
+                    CartView(menuViewModel: menuViewModel)
+                        .presentationDetents([.medium, .large])
+                        .presentationDragIndicator(.visible)
+                }
             }
             .padding()
             .background(.thinMaterial)
@@ -74,6 +81,6 @@ struct MenuRowDetailView: View {
 
 struct MenuRowDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuRowDetailView(item: JSONMenu.MenuItem.example)
+        MenuRowDetailView(item: JSONMenu.MenuItem.example, menuViewModel: MenuViewModel())
     }
 }
