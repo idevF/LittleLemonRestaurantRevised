@@ -23,7 +23,7 @@ struct LoginView: View {
         VStack {
             HeaderView(isLoggedIn: loginVM.isLoggedIn)
             Spacer()
-            HeroView(isLoggedIn: loginVM.isLoggedIn)
+            HeroView(isLoggedIn: loginVM.isLoggedIn, searchText: .constant(""))
             Spacer()
             formFieldCardView
             showProgressView

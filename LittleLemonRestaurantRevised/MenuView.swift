@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct MenuView: View {
-    @StateObject var menuViewModel = MenuViewModel()
+    @StateObject var menuViewModel = MenuViewModel() 
     
     var body: some View {
         NavigationStack {
             HeaderView(isLoggedIn: true)
-            HeroView(isLoggedIn: true)
+            HeroView(isLoggedIn: true, searchText: $menuViewModel.searchText)
                 .padding(.horizontal)
                 .overlay(alignment: .bottom, content: { progressView })
+                .onChange(of: menuViewModel.searchText) { _ in
+                    menuViewModel.searchMenuTitle()
+                }
             MenuBreakdownView(menuViewModel: menuViewModel)
             
             Divider()
@@ -43,7 +46,10 @@ struct MenuView: View {
                 MenuRowDetailView(item: item)
             }
             .scrollIndicators(.hidden)
-            .onDisappear { menuViewModel.isButtonPressed = false }
+            .onDisappear {
+                menuViewModel.isButtonPressed = false
+                menuViewModel.searchText = ""
+            }
         }
     }
 }

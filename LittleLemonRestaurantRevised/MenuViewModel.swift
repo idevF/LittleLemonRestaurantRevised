@@ -16,6 +16,7 @@ final class MenuViewModel: ObservableObject {
     
     @Published var isButtonPressed: Bool = false
     
+    @Published var searchText: String = "" 
     
     func fetchJSONMenu() async {
         let apiService = MenuAPIService()
@@ -34,7 +35,6 @@ final class MenuViewModel: ObservableObject {
     }
     
     func filtered(item: String) {
-        
         if isButtonPressed {
             self.menu = menu.map({$0}).filter({ $0.menuCategory.lowercased() == item.lowercased() })
         } else {
@@ -44,6 +44,16 @@ final class MenuViewModel: ObservableObject {
         }
     }
     
+    func searchMenuTitle() {
+        if searchText.isEmpty {
+            Task(priority: .background) {
+                await fetchJSONMenu()
+            }
+            isButtonPressed = false
+        } else {
+            self.menu = menu.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
     
 }
 
