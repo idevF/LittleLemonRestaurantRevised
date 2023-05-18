@@ -19,14 +19,16 @@ struct HeaderView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .overlay(alignment: .trailing) {
                     if isLoggedIn {
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 45, height: 45)
-                            .padding()
-                            .onTapGesture {
-//                                print("headerview")
-                            }
+                        NavigationLink {
+                            UserProfileView(loginVM: LoginViewModel.init())
+                        } label: {
+                            Image(systemName: "person.crop.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(Color("primaryOne"))
+                                .frame(width: 40, height: 40)
+                                .padding(.trailing)
+                        }
                     }
                 }
         }

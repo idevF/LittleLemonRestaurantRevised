@@ -14,16 +14,18 @@ struct UserProfileView: View {
 
     var body: some View {
 
-        VStack(alignment: .center) {
-            Spacer()
-            HeaderView(isLoggedIn: true)
-            avatarSection
-            formFieldSection
-            logoutButton
-            discardChangesAndSaveButtons
-            Spacer()
+        ScrollView {
+            VStack(alignment: .center) {
+                Spacer()
+                HeaderView(isLoggedIn: false)
+                avatarSection
+                formFieldSection
+                logoutButton
+                discardChangesAndSaveButtons
+                Spacer()
+            }
+            .padding()
         }
-        .padding()
     }
     
     // avatar layer

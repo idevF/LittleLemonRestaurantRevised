@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  OnboardingView.swift
 //  LittleLemonRestaurantRevised
 //
 //  Created by idevF on 2.05.2023.
@@ -7,21 +7,20 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct OnboardingView: View {
     @StateObject var loginVM = LoginViewModel()
     
     var body: some View {
         if loginVM.isLoggedIn {
-            UserProfileView(loginVM: loginVM)
+            HomeView(loginVM: loginVM)
         } else {
-//            LoginView(loginVM: loginVM)
-            MenuView()
+            LoginView(loginVM: loginVM)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        OnboardingView()
     }
 }
