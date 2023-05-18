@@ -27,8 +27,16 @@ struct MenuRowDetailView: View {
             VStack(alignment: .leading) {
                 Text(item.description)
                     .padding(.vertical, 5)
-                
-                Label("Delivery time: 30 minutes", systemImage: "box.truck.badge.clock")
+                HStack {
+                    Label("Delivery time: 30 minutes", systemImage: "box.truck.badge.clock")
+                    Spacer()
+                    Label("Show Order Summary", systemImage: "cart")
+                        .foregroundColor(Color("secondaryOne"))
+                        .onTapGesture {
+                            showSheet.toggle()
+                        }
+                }
+                .padding(.horizontal)
             }
             .font(.system(.subheadline, design: .serif, weight: .semibold))
             .foregroundColor(Color.secondary)
@@ -43,7 +51,7 @@ struct MenuRowDetailView: View {
                     .padding(10)
                 
                 Button {
-                    menuViewModel.addOrder(title: item.title, price: item.price, quantity: quantity, total: itemTotal)
+                    menuViewModel.addOrder(title: item.title, price: item.price, quantity: quantity)
                     showAlert.toggle()
                 } label: {
                     Text("Add to cart for \(itemTotal, format: .currency(code: "USD"))")
@@ -73,7 +81,7 @@ struct MenuRowDetailView: View {
         .padding()
     }
     
-    var itemTotal: Double {
+    private var itemTotal: Double {
         return (Double(item.price) ?? 0) * Double(quantity)
     }
     

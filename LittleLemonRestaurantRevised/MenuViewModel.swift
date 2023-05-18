@@ -18,7 +18,7 @@ final class MenuViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     
-    @Published var ordersList: [Order] = [] // [Order(title: "Fish", price: "10", quantity: 2, total: 20.0), Order(title: "Grilled Fish", price: "10", quantity: 2, total:20.0), Order(title: "Lemon Dessert", price: "10", quantity: 3, total:30.0)]
+    @Published var ordersList: [Order] = [] // [Order(title: "Fish", price: "10", quantity: 2), Order(title: "Grilled Fish", price: "10", quantity: 2), Order(title: "Lemon Dessert", price: "10", quantity: 3)]
     
     func fetchJSONMenu() async {
         let apiService = MenuAPIService()
@@ -57,9 +57,15 @@ final class MenuViewModel: ObservableObject {
         }
     }
     
-    func addOrder(title: String, price: String, quantity: Int, total: Double) {
-        let order = Order(title: title, price: price, quantity: quantity, total: total)
+    func addOrder(title: String, price: String, quantity: Int) {
+        let order = Order(title: title, price: price, quantity: quantity)
         ordersList.append(order)
+    }
+    
+    func removeOrder(order: Order) {
+        if let index = ordersList.firstIndex(where: { $0.id == order.id } ) {
+            ordersList.remove(at: index)
+        }
     }
     
     var grandTotal: Double {
