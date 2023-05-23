@@ -27,6 +27,8 @@
 		A2844A492A0DF22700B6B468 /* MenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2844A482A0DF22700B6B468 /* MenuRowView.swift */; };
 		A29942BC2A0FC7DE00C5B580 /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29942BB2A0FC7DE00C5B580 /* MenuCategory.swift */; };
 		A29F018B2A02A14C001505FE /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29F018A2A02A14C001505FE /* HeroView.swift */; };
+		A2AABCEE2A1CAE9300D42B61 /* MenuDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2AABCEC2A1CAE9300D42B61 /* MenuDataModel.xcdatamodeld */; };
+		A2AABCF02A1CB01E00D42B61 /* MenuItemEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AABCEF2A1CB01E00D42B61 /* MenuItemEntity+Extension.swift */; };
 		A2AAE6B62A14CFF000BAAA0B /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AAE6B52A14CFF000BAAA0B /* CartView.swift */; };
 		A2AAE6B82A14D48200BAAA0B /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AAE6B72A14D48200BAAA0B /* OrderModel.swift */; };
 		A2AF01342A13B5A700315877 /* MenuBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF01332A13B5A700315877 /* MenuBreakdownView.swift */; };
@@ -58,6 +60,8 @@
 		A2844A482A0DF22700B6B468 /* MenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRowView.swift; sourceTree = "<group>"; };
 		A29942BB2A0FC7DE00C5B580 /* MenuCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
 		A29F018A2A02A14C001505FE /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
+		A2AABCED2A1CAE9300D42B61 /* MenuDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MenuDataModel.xcdatamodel; sourceTree = "<group>"; };
+		A2AABCEF2A1CB01E00D42B61 /* MenuItemEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemEntity+Extension.swift"; sourceTree = "<group>"; };
 		A2AAE6B52A14CFF000BAAA0B /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		A2AAE6B72A14D48200BAAA0B /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		A2AF01332A13B5A700315877 /* MenuBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBreakdownView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				A26E3FDC2A0157B50018732A /* LittleLemonRestaurantRevisedApp.swift */,
 				A26E3FDE2A0157B50018732A /* OnboardingView.swift */,
 				A27BDD512A16126C00C84825 /* HomeView.swift */,
+				A2AABCEB2A1CAD5C00D42B61 /* COREDATA */,
 				A27BDD502A160C8E00C84825 /* MENU */,
 				A2AE1F372A0CF82C003043CE /* LOGIN */,
 				A26E3FE02A0157B60018732A /* Assets.xcassets */,
@@ -164,6 +169,15 @@
 				A27BDD4C2A160BDA00C84825 /* Models */,
 			);
 			path = MENU;
+			sourceTree = "<group>";
+		};
+		A2AABCEB2A1CAD5C00D42B61 /* COREDATA */ = {
+			isa = PBXGroup;
+			children = (
+				A2AABCEC2A1CAE9300D42B61 /* MenuDataModel.xcdatamodeld */,
+				A2AABCEF2A1CB01E00D42B61 /* MenuItemEntity+Extension.swift */,
+			);
+			path = COREDATA;
 			sourceTree = "<group>";
 		};
 		A2AE1F332A0CF76A003043CE /* Views */ = {
@@ -303,6 +317,7 @@
 				A21F265D2A03A84E00AB96CE /* HeaderView.swift in Sources */,
 				A264A0472A0B91A400E3F346 /* ForgotPasswordView.swift in Sources */,
 				A26E3FDF2A0157B50018732A /* OnboardingView.swift in Sources */,
+				A2AABCF02A1CB01E00D42B61 /* MenuItemEntity+Extension.swift in Sources */,
 				A2AAE6B82A14D48200BAAA0B /* OrderModel.swift in Sources */,
 				A2321B642A0D0E7C00B3672F /* MenuView.swift in Sources */,
 				A2321B622A0D0C7600B3672F /* MenuModel.swift in Sources */,
@@ -310,6 +325,7 @@
 				A2AF01342A13B5A700315877 /* MenuBreakdownView.swift in Sources */,
 				A223C7952A016E930082A28D /* LoginViewModel.swift in Sources */,
 				A26E3FEB2A0157FB0018732A /* User.swift in Sources */,
+				A2AABCEE2A1CAE9300D42B61 /* MenuDataModel.xcdatamodeld in Sources */,
 				A2321B662A0D0F0B00B3672F /* MenuViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +525,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A2AABCEC2A1CAE9300D42B61 /* MenuDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A2AABCED2A1CAE9300D42B61 /* MenuDataModel.xcdatamodel */,
+			);
+			currentVersion = A2AABCED2A1CAE9300D42B61 /* MenuDataModel.xcdatamodel */;
+			path = MenuDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A26E3FD12A0157B50018732A /* Project object */;
 }
