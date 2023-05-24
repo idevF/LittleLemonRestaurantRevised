@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @StateObject var menuViewModel = MenuViewModel() 
     
     var body: some View {
@@ -17,14 +19,14 @@ struct MenuView: View {
                 .padding(.horizontal)
                 .overlay(alignment: .bottom, content: { progressView })
                 .onChange(of: menuViewModel.searchText) { _ in
-                    menuViewModel.searchMenuTitle()
+                    menuViewModel.searchMenuTitle(viewContext)
                 }
             MenuBreakdownView(menuViewModel: menuViewModel)
             
             Divider()
             
             List {
-                ForEach(menuViewModel.menu) { item in
+                ForEach(menuViewModel.savedMenu) { item in
                     NavigationLink(value: item) {
                         MenuRowView(item: item)
                         
@@ -33,7 +35,7 @@ struct MenuView: View {
             }
             .listStyle(.plain)
             .task {
-                await menuViewModel.fetchJSONMenu()
+                await menuViewModel.fetchJSONMenuAndPopulateCoreData(viewContext)
             }
             .alert("Menu Error", isPresented: $menuViewModel.showErrorAlert) {
                 Button("OK") { }
@@ -42,7 +44,7 @@ struct MenuView: View {
                     Text(errorMessage)
                 }
             }
-            .navigationDestination(for: JSONMenu.MenuItem.self) { item in
+            .navigationDestination(for: MenuItemEntity.self) { item in
                 MenuRowDetailView(item: item, menuViewModel: menuViewModel)
             }
             .scrollIndicators(.hidden)
@@ -57,6 +59,7 @@ struct MenuView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
 

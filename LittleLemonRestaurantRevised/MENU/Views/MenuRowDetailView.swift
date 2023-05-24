@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MenuRowDetailView: View {
-    let item: JSONMenu.MenuItem
+//    let item: JSONMenu.MenuItem
+    let item: MenuItemEntity
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var menuViewModel: MenuViewModel
     
@@ -25,7 +26,8 @@ struct MenuRowDetailView: View {
             
             
             VStack(alignment: .leading) {
-                Text(item.description)
+//                Text(item.description)
+                Text(item.entityExplanation)
                     .padding(.vertical, 5)
                 HStack {
                     Label("Delivery time: 30 minutes", systemImage: "box.truck.badge.clock")
@@ -51,7 +53,8 @@ struct MenuRowDetailView: View {
                     .padding(10)
                 
                 Button {
-                    menuViewModel.addOrder(title: item.title, price: item.price, quantity: quantity)
+//                    menuViewModel.addOrder(title: item.title, price: item.price, quantity: quantity)
+                    menuViewModel.addOrder(title: item.entityTitle, price: item.entityPrice, quantity: quantity)
                     showAlert.toggle()
                 } label: {
                     Text("Add to cart for \(itemTotal, format: .currency(code: "USD"))")
@@ -77,18 +80,20 @@ struct MenuRowDetailView: View {
             .padding(.vertical)
             .shadow(color: Color.secondary, radius: 10)
         }
-        .navigationTitle(item.title)
+        .navigationTitle(item.entityTitle)
         .padding()
     }
     
     private var itemTotal: Double {
-        return (Double(item.price) ?? 0) * Double(quantity)
+        return (Double(item.entityPrice) ?? 0) * Double(quantity)
     }
     
 }
 
 struct MenuRowDetailView_Previews: PreviewProvider {
+    static let context = PersistenceController.shared.container.viewContext
+    
     static var previews: some View {
-        MenuRowDetailView(item: JSONMenu.MenuItem.example, menuViewModel: MenuViewModel())
+        MenuRowDetailView(item: MenuItemEntity.example(context), menuViewModel: MenuViewModel())
     }
 }

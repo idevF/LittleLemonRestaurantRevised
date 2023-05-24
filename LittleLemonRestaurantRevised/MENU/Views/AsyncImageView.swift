@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct AsyncImageView: View {
-    let item: JSONMenu.MenuItem
+//    let item: JSONMenu.MenuItem
+    let item: MenuItemEntity
     
     var body: some View {
-        AsyncImage(url: URL(string: item.image)) { phase in
+        AsyncImage(url: URL(string: item.entityImage)) { phase in
             if let image = phase.image {
                 image // Displays the loaded image.
                     .resizable()
@@ -29,7 +30,9 @@ struct AsyncImageView: View {
 }
 
 struct AsyncImageView_Previews: PreviewProvider {
+    static let context = PersistenceController.shared.container.viewContext
+   
     static var previews: some View {
-        AsyncImageView(item: JSONMenu.MenuItem.example)
+        AsyncImageView(item: MenuItemEntity.example(context))
     }
 }

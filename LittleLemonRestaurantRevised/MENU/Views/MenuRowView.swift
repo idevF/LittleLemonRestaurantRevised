@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct MenuRowView: View {
-    let item: JSONMenu.MenuItem
+//    let item: JSONMenu.MenuItem
+    let item: MenuItemEntity
     
     var body: some View {
         HStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(item.title)
+//                Text(item.title)
+                Text(item.entityTitle)
                     .font(.system(.headline, design: .serif, weight: .bold))
                     .foregroundColor(Color.primary)
-                Text(item.description)
-                Text("\(Double(item.price) ?? 0, format: .currency(code: "USD"))")
+//                Text(item.description)
+                Text(item.entityExplanation)
+//                Text("\(Double(item.price) ?? 0, format: .currency(code: "USD"))")
+                Text("\(Double(item.entityPrice) ?? 0, format: .currency(code: "USD"))")
             }
             .font(.system(.subheadline, design: .serif, weight: .semibold))
             .foregroundColor(Color.secondary)
@@ -32,8 +36,10 @@ struct MenuRowView: View {
 }
 
 struct MenuRowView_Previews: PreviewProvider {
+    static let context = PersistenceController.shared.container.viewContext
+    
     static var previews: some View {
-        MenuRowView(item: JSONMenu.MenuItem.example)
+        MenuRowView(item: MenuItemEntity.example(context))
             .padding()
     }
 }

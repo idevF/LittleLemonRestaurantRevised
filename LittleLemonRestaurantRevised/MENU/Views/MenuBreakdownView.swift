@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuBreakdownView: View {
     @ObservedObject var menuViewModel: MenuViewModel
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -21,7 +22,7 @@ struct MenuBreakdownView: View {
                     Button {
                         // filter
                         menuViewModel.isButtonPressed.toggle()
-                        menuViewModel.filtered(item: item.rawValue)
+                        menuViewModel.filtered(item: item.rawValue, viewContext)
                     } label: {
                         Text(item.rawValue.capitalized)
                             .font(.system(.subheadline, design: .rounded, weight: .bold))
@@ -30,7 +31,7 @@ struct MenuBreakdownView: View {
                             .foregroundColor(Color("primaryOne"))
                             .brandButtonStyle(foreground: Color.clear,
                                               background:
-                                                (menuViewModel.isButtonPressed && menuViewModel.menu.contains(where: { $0.menuCategory.lowercased() == item.rawValue }) )
+                                                (menuViewModel.isButtonPressed && menuViewModel.savedMenu.contains(where: { $0.entityMenuCategory.lowercased() == item.rawValue }) )
                                               ? Color("primaryTwo") : Color("highlightOne")
                             )
                     }
