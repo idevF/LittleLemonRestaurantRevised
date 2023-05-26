@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var loginVM: LoginViewModel
     @State var tabSelection = 0
     
     var body: some View {
@@ -19,7 +18,7 @@ struct HomeView: View {
                 }
                 .tag(0)
             
-            UserProfileView(loginVM: loginVM)
+            UserProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "square.and.pencil")
                 }
@@ -30,7 +29,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(loginVM: LoginViewModel())
+        HomeView()
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .environmentObject(LoginViewModel())
     }
 }

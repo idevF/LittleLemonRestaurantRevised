@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ForgotPasswordView: View {
     // MARK: PROPERTIES
-    @ObservedObject var loginVM: LoginViewModel
+    @EnvironmentObject var loginVM: LoginViewModel
     @Environment(\.dismiss) var dismiss
     
     @State private var showAlert: Bool = false
@@ -30,7 +30,8 @@ struct ForgotPasswordView: View {
 // MARK: PREVIEW
 struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        ForgotPasswordView(loginVM: LoginViewModel())
+        ForgotPasswordView()
+            .environmentObject(LoginViewModel())
     }
 }
 
@@ -43,9 +44,9 @@ extension ForgotPasswordView {
                 .foregroundColor(Color("secondaryOne"))
                 .padding(.bottom)
             
-            FormFieldView(loginVM: loginVM, title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
             
-            FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
+            FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
             
         }
     }

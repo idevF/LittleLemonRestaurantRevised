@@ -20,7 +20,7 @@ struct HeaderView: View {
                 .overlay(alignment: .trailing) {
                     if isLoggedIn {
                         NavigationLink {
-                            UserProfileView(loginVM: LoginViewModel.init())
+                            UserProfileView()
                         } label: {
                             Image(systemName: "person.crop.circle")
                                 .resizable()

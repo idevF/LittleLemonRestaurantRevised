@@ -9,10 +9,10 @@ import SwiftUI
 
 struct UserProfileView: View {
     // MARK: PROPERTIES
-    @ObservedObject var loginVM: LoginViewModel
+    @EnvironmentObject var loginVM: LoginViewModel
     
     @State private var showAlert: Bool = false
-    
+
     // MARK: BODY
     var body: some View {
         ScrollView {
@@ -33,7 +33,8 @@ struct UserProfileView: View {
 // MARK: PREVIEW
 struct UserProfile_Previews: PreviewProvider {
     static var previews: some View {
-        UserProfileView(loginVM: LoginViewModel())
+        UserProfileView()
+            .environmentObject(LoginViewModel())
     }
 }
 
@@ -84,13 +85,13 @@ extension UserProfileView {
     
     private var formFieldSection: some View {
         VStack(alignment: .leading, spacing: 2) {
-            FormFieldView(loginVM: loginVM, title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
+            FormFieldView(title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
             
-            FormFieldView(loginVM: loginVM, title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
             
-            FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
+            FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
             
-            FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
             
             Spacer()
             

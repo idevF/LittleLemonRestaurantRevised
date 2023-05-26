@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     // MARK: PROPERTIES
-    @ObservedObject var loginVM: LoginViewModel
+    @EnvironmentObject var loginVM: LoginViewModel
     @Environment(\.dismiss) private var dismiss
     
     @State private var showAlert: Bool = false
@@ -30,7 +30,8 @@ struct SignUpView: View {
 // MARK: PREVIEW
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(loginVM: LoginViewModel())
+        SignUpView()
+            .environmentObject(LoginViewModel())
     }
 }
 
@@ -56,13 +57,13 @@ extension SignUpView {
                 .foregroundColor(Color("secondaryOne"))
                 .padding(.bottom)
             
-            FormFieldView(loginVM: loginVM, title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
+            FormFieldView(title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
             
-            FormFieldView(loginVM: loginVM, title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
             
-            FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
+            FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
             
-            FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
             
             subscriptionsSection
         }

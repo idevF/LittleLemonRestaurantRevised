@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FormFieldView: View {
     // MARK: PROPERTIES
-    @ObservedObject var loginVM: LoginViewModel
+    @EnvironmentObject var loginVM: LoginViewModel
     
     let title: String
     @Binding var text: String
@@ -33,11 +33,12 @@ struct FormFieldView: View {
 struct FormFieldView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
-            FormFieldView(loginVM: LoginViewModel(), title: "First Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: true)
-            FormFieldView(loginVM: LoginViewModel(), title: "Last Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: false)
-            FormFieldView(loginVM: LoginViewModel(), title: "Email Address", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
-            FormFieldView(loginVM: LoginViewModel(), title: "Password", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
+            FormFieldView(title: "First Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: true)
+            FormFieldView(title: "Last Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Email Address", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
+            FormFieldView(title: "Password", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
         }
+        .environmentObject(LoginViewModel())
         //        .padding()
         //        .foregroundColor(Color("highlightOne"))
         //        .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))

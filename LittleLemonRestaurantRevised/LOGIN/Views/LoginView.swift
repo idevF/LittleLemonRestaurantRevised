@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     // MARK: PROPERTIES
-    @ObservedObject var loginVM: LoginViewModel
+    @EnvironmentObject var loginVM: LoginViewModel
     @FocusState private var focusedField: Field?
     @State private var showAlert: Bool = false
     
@@ -30,13 +30,15 @@ struct LoginView: View {
             Spacer()
             buttonsSection
         }
+        
     }
 }
 
 // MARK: PREVIEW
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(loginVM: LoginViewModel())
+        LoginView()
+            .environmentObject(LoginViewModel())
             .padding()
     }
 }
@@ -46,10 +48,10 @@ extension LoginView {
     private var formFieldCardView: some View {
         VStack(alignment: .leading) {
             
-            FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
+            FormFieldView(title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
                 .focused($focusedField, equals: .emailField)
             
-            FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
+            FormFieldView(title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
                 .focused($focusedField, equals: .passwordField)
         }
         .cardViewStyle()
@@ -78,7 +80,7 @@ extension LoginView {
                         .brandButtonStyle(foreground: Color("primaryOne"), background: Color("highlightOne"))
                 }
                 .sheet(isPresented: $loginVM.isSignUp) {
-                    SignUpView(loginVM: loginVM)
+                    SignUpView()
                 }
                 // Log In button
                 Button {
@@ -121,7 +123,7 @@ extension LoginView {
                     loginVM.isForgotPassword.toggle()
                 }
                 .sheet(isPresented: $loginVM.isForgotPassword) {
-                    ForgotPasswordView(loginVM: loginVM)
+                    ForgotPasswordView()
                         .presentationDetents([.medium])
                         .presentationDragIndicator(.visible)
                 }

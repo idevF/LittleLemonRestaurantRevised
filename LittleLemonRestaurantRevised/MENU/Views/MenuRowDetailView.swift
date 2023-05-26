@@ -98,7 +98,7 @@ extension MenuRowDetailView {
         .shadow(color: Color.secondary, radius: 10)
     }
     
-    private var itemTotal: Double {
+    var itemTotal: Double {
         return (Double(item.entityPrice) ?? 0) * Double(quantity)
     }
 }
