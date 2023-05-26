@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct LoginView: View {
+    // MARK: PROPERTIES
     @ObservedObject var loginVM: LoginViewModel
+    @FocusState private var focusedField: Field?
+    @State private var showAlert: Bool = false
     
     enum Field: Hashable {
         case emailField
         case passwordField
     }
     
-    @FocusState private var focusedField: Field?
-    
-    @State private var showAlert: Bool = false
-    
+    // MARK: BODY
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: loginVM.isLoggedIn)
@@ -28,16 +28,27 @@ struct LoginView: View {
             formFieldCardView
             showProgressView
             Spacer()
-            buttonsSection            
+            buttonsSection
         }
     }
-    
+}
+
+// MARK: PREVIEW
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(loginVM: LoginViewModel())
+            .padding()
+    }
+}
+
+// MARK: COMPONENTS
+extension LoginView {
     private var formFieldCardView: some View {
         VStack(alignment: .leading) {
             
             FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
                 .focused($focusedField, equals: .emailField)
-                
+            
             FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
                 .focused($focusedField, equals: .passwordField)
         }
@@ -60,7 +71,7 @@ struct LoginView: View {
             HStack {
                 // Sign Up button
                 Button {
-//                        print("Sign Up button \(Thread.current)")
+                    //                        print("Sign Up button \(Thread.current)")
                     loginVM.isSignUp.toggle()
                 } label: {
                     Text("Sign Up")
@@ -71,11 +82,10 @@ struct LoginView: View {
                 }
                 // Log In button
                 Button {
-//                        print("login button \(Thread.current)")
-//                        print("fields valid \(loginVM.areFieldsValid)")
+                    //                        print("login button \(Thread.current)")
                     if loginVM.areFieldsValid {
                         loginVM.checkCredentialsAndLogIn()
-
+                        
                     } else {
                         showAlert.toggle()
                     }
@@ -116,12 +126,5 @@ struct LoginView: View {
                         .presentationDragIndicator(.visible)
                 }
         }
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(loginVM: LoginViewModel())
-            .padding()
     }
 }

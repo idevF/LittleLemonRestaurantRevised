@@ -47,7 +47,7 @@ extension View {
 struct BrandButtonModifier: ViewModifier {
     let foreground: Color
     let background: Color
-
+    
     func body(content: Content) -> some View {
         content
             .font(.headline)
@@ -55,7 +55,7 @@ struct BrandButtonModifier: ViewModifier {
             .padding()
             .frame(maxWidth: .infinity)
             .background(background, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-//            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary, lineWidth: 2))
+        //            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary, lineWidth: 2))
             .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(foreground, lineWidth: 2))
     }
 }

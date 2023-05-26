@@ -15,13 +15,13 @@ final class LoginViewModel: ObservableObject {
     @Published var isSignUp: Bool = false
     @Published var isForgotPassword: Bool = false
     @Published var isError: Bool = false
-
+    
     @Published var error: LoginAPIService.LoginAPIError?
     @Published var user: User = LoginViewModel.noUser
-
-//    User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass2Bbb", avatar: "sample",
-//                                     subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
-
+    
+    //    User(firstName: "sample", lastName: "sample", emailAddress: "tdoe@example.com", password: "pass2Bbb", avatar: "sample",
+    //                                     subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
+    
     func checkCredentialsAndLogIn() {
         guard areFieldsValid else { return }
         isConnecting = true
@@ -56,7 +56,7 @@ final class LoginViewModel: ObservableObject {
     
     func saveChanges() -> Data? {
         guard areFieldsValid else { return nil }
-//        isSaved = true
+        
         let savedUser = user
         do {
             let jsonUser = try JSONEncoder().encode(savedUser)
@@ -111,5 +111,5 @@ final class LoginViewModel: ObservableObject {
     }
     
     static let noUser = User(firstName: "", lastName: "", emailAddress: "", password: "", avatar: "",
-                        subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
+                             subscriptions: [User.Subscription(name: .order, isSelected: true), User.Subscription(name: .password, isSelected: false), User.Subscription(name: .special, isSelected: true), User.Subscription(name: .news, isSelected: false)])
 }

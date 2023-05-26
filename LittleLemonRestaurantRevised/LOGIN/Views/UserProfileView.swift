@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct UserProfileView: View {
+    // MARK: PROPERTIES
     @ObservedObject var loginVM: LoginViewModel
     
     @State private var showAlert: Bool = false
-
+    
+    // MARK: BODY
     var body: some View {
-
         ScrollView {
             VStack(alignment: .center) {
                 Spacer()
@@ -27,8 +28,18 @@ struct UserProfileView: View {
             .padding()
         }
     }
-    
-    // avatar layer
+}
+
+// MARK: PREVIEW
+struct UserProfile_Previews: PreviewProvider {
+    static var previews: some View {
+        UserProfileView(loginVM: LoginViewModel())
+    }
+}
+
+// MARK: COMPONENTS
+extension UserProfileView {
+    // avatar section
     private var avatarSection: some View {
         Group {
             Text("Personal Information")
@@ -56,9 +67,9 @@ struct UserProfileView: View {
                     Text("Change")
                         .frame(width: 65, height: 5)
                         .brandButtonStyle(foreground: Color("highlightOne"), background: Color("primaryOne"))
-                        
+                    
                 }
-//                Spacer()
+                //                Spacer()
                 Button {
                     // remove
                 } label: {
@@ -74,17 +85,17 @@ struct UserProfileView: View {
     private var formFieldSection: some View {
         VStack(alignment: .leading, spacing: 2) {
             FormFieldView(loginVM: loginVM, title: "First Name", text: $loginVM.user.firstName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: true)
-
+            
             FormFieldView(loginVM: loginVM, title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
-
+            
             FormFieldView(loginVM: loginVM, title: "Email Address", text: $loginVM.user.emailAddress, subtitleColor: Color.secondary, isSecure: false, isEmail: true, isGivenName: false)
-
+            
             FormFieldView(loginVM: loginVM, title: "Password", text: $loginVM.user.password, subtitleColor: Color.secondary, isSecure: true, isEmail: false, isGivenName: false)
-
+            
             Spacer()
             
             subscriptionsSection
-
+            
         }
     }
     
@@ -96,12 +107,12 @@ struct UserProfileView: View {
             ForEach($loginVM.user.subscriptions) { $item in
                 Label(item.name.rawValue,
                       systemImage: item.isSelected ? "checkmark.square.fill" : "square")
-                    .font(.system(.subheadline, design: .rounded, weight: .regular))
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 1.5)) {
-                            item.isSelected.toggle()
-                        }
+                .font(.system(.subheadline, design: .rounded, weight: .regular))
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 1.5)) {
+                        item.isSelected.toggle()
                     }
+                }
             }
         }
     }
@@ -123,7 +134,7 @@ struct UserProfileView: View {
             // Discard changes
             Button {
                 loginVM.discardChanges()
-//                print("discard changes \(Thread.current)")
+                //                print("discard changes \(Thread.current)")
             } label: {
                 Text("Discard changes")
                     .frame(width: 135, height: 10)
@@ -136,7 +147,7 @@ struct UserProfileView: View {
                 } else {
                     showAlert.toggle()
                 }
-//                print(loginVM.areFieldsValid)
+                //                print(loginVM.areFieldsValid)
             } label: {
                 Text("Save changes")
                     .frame(width: 135, height: 10)
@@ -157,8 +168,3 @@ struct UserProfileView: View {
     }
 }
 
-struct UserProfile_Previews: PreviewProvider {
-    static var previews: some View {
-        UserProfileView(loginVM: LoginViewModel())
-    }
-}

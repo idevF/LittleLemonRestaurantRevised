@@ -31,5 +31,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(loginVM: LoginViewModel())
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

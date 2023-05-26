@@ -31,9 +31,9 @@ struct MenuBreakdownView: View {
                             .foregroundColor(Color("primaryOne"))
                             .brandButtonStyle(foreground: Color.clear,
                                               background:
-                                                (menuViewModel.isButtonPressed && menuViewModel.savedMenu.contains(where: { $0.entityMenuCategory.lowercased() == item.rawValue }) )
-                                              ? Color("primaryTwo") : Color("highlightOne")
-                            )
+                                                (menuViewModel.isButtonPressed &&
+                                                 menuViewModel.savedMenu.contains(where: { $0.entityMenuCategory.lowercased() == item.rawValue }))
+                                              ? Color("primaryTwo") : Color("highlightOne"))
                     }
                 }
             }

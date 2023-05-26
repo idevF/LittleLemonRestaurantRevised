@@ -8,34 +8,33 @@
 import SwiftUI
 
 struct CartView: View {
+    // MARK: PROPERTIES
     @ObservedObject var menuViewModel: MenuViewModel
     @Environment(\.dismiss) private var dismiss
     
     @State private var editMode: Bool = false
     @State private var showDeleteAlert: Bool = false
     
+    // MARK: BODY
     var body: some View {
         VStack {
             headerSection
-            
             gridViewSection
-            
             checkOutButton
-            
             Spacer()
         }
         .background(.ultraThinMaterial)
     }
-    
-    
 }
 
+// MARK: PREVIEW
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView(menuViewModel: MenuViewModel())
     }
 }
 
+// MARK: COMPONENTS
 extension CartView {
     private var headerSection: some View {
         HeaderView(isLoggedIn: false)

@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct FormFieldView: View {
+    // MARK: PROPERTIES
     @ObservedObject var loginVM: LoginViewModel
     
     let title: String
     @Binding var text: String
     let subtitleColor: Color
-    
     let isSecure: Bool
     let isEmail: Bool
     let isGivenName: Bool
     
+    // MARK: BODY
     var body: some View {
         Group {
             headerOfTheFormField
@@ -26,7 +27,25 @@ struct FormFieldView: View {
         }
         .padding(.vertical, 0)
     }
-    
+}
+
+// MARK: PREVIEW
+struct FormFieldView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(alignment: .leading) {
+            FormFieldView(loginVM: LoginViewModel(), title: "First Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: true)
+            FormFieldView(loginVM: LoginViewModel(), title: "Last Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: false)
+            FormFieldView(loginVM: LoginViewModel(), title: "Email Address", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
+            FormFieldView(loginVM: LoginViewModel(), title: "Password", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
+        }
+        //        .padding()
+        //        .foregroundColor(Color("highlightOne"))
+        //        .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+}
+
+// MARK: COMPONENTS
+extension FormFieldView {
     private var headerOfTheFormField: some View {
         Group { Text(title) + Text(" *").foregroundColor(subtitleColor) }.font(.headline)
     }
@@ -74,20 +93,6 @@ struct FormFieldView: View {
         .foregroundColor(subtitleColor)
         .padding([.leading, .bottom], 5)
         .fixedSize(horizontal: false, vertical: true)
-
-    }
-}
-
-struct FormFieldView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack(alignment: .leading) {
-            FormFieldView(loginVM: LoginViewModel(), title: "First Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: true)
-            FormFieldView(loginVM: LoginViewModel(), title: "Last Name", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: false, isGivenName: false)
-            FormFieldView(loginVM: LoginViewModel(), title: "Email Address", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: false, isEmail: true, isGivenName: false)
-            FormFieldView(loginVM: LoginViewModel(), title: "Password", text: .constant("required"), subtitleColor: Color("secondaryTwo"), isSecure: true, isEmail: false, isGivenName: false)
-        }
-//        .padding()
-//        .foregroundColor(Color("highlightOne"))
-//        .background(Color("primaryOne"), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        
     }
 }

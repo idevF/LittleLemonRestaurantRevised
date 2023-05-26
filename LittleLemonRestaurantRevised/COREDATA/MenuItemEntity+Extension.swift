@@ -62,13 +62,13 @@ extension MenuItemEntity {
     static func deleteAll(_ context:NSManagedObjectContext) {
         let request = MenuItemEntity.request()
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-
+        
         do {
             guard let persistentStoreCoordinator = context.persistentStoreCoordinator else { return }
             try persistentStoreCoordinator.execute(deleteRequest, with: context)
             context.reset()
             save(context)
-
+            
         } catch let error {
             print(error.localizedDescription)
         }

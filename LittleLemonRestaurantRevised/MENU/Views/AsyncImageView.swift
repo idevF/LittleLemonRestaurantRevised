@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AsyncImageView: View {
-//    let item: JSONMenu.MenuItem
+    //    let item: JSONMenu.MenuItem
     let item: MenuItemEntity
     
     var body: some View {
@@ -31,7 +31,7 @@ struct AsyncImageView: View {
 
 struct AsyncImageView_Previews: PreviewProvider {
     static let context = PersistenceController.shared.container.viewContext
-   
+    
     static var previews: some View {
         AsyncImageView(item: MenuItemEntity.example(context))
     }

@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SignUpView: View {
+    // MARK: PROPERTIES
     @ObservedObject var loginVM: LoginViewModel
-    
     @Environment(\.dismiss) private var dismiss
     
     @State private var showAlert: Bool = false
     @State private var showSignInAlert: Bool = false
     
+    // MARK: BODY
     var body: some View {
         VStack {
             headerSection
@@ -24,7 +25,17 @@ struct SignUpView: View {
         .padding()
         .background(.thinMaterial)
     }
-    
+}
+
+// MARK: PREVIEW
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView(loginVM: LoginViewModel())
+    }
+}
+
+// MARK: COMPONENTS
+extension SignUpView {
     private var headerSection: some View {
         HeaderView(isLoggedIn: false).padding()
             .overlay(alignment: .topLeading) {
@@ -65,12 +76,12 @@ struct SignUpView: View {
             ForEach($loginVM.user.subscriptions) { $item in
                 Label(item.name.rawValue,
                       systemImage: item.isSelected ? "checkmark.square.fill" : "square")
-                    .font(.system(.subheadline, design: .rounded, weight: .regular))
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 1.5)) {
-                            item.isSelected.toggle()
-                        }
+                .font(.system(.subheadline, design: .rounded, weight: .regular))
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 1.5)) {
+                        item.isSelected.toggle()
                     }
+                }
             }
         }
     }
@@ -78,7 +89,7 @@ struct SignUpView: View {
     private var signInButton: some View {
         // Sign In button
         Button {
-//            print("Sign In button \(Thread.current)")
+            //            print("Sign In button \(Thread.current)")
             if loginVM.areFieldsValid {
                 showSignInAlert.toggle()
             } else {
@@ -98,11 +109,5 @@ struct SignUpView: View {
         } message: {
             Text("A confirmation message has sent to your e-mail address. Please confirm the link in the message to login!")
         }
-    }
-}
-
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView(loginVM: LoginViewModel())
     }
 }

@@ -23,52 +23,35 @@ final class MenuViewModel: ObservableObject {
     
     @Published var ordersList: [Order] = [] // [Order(title: "Fish", price: "10", quantity: 2), Order(title: "Grilled Fish", price: "10", quantity: 2), Order(title: "Lemon Dessert", price: "10", quantity: 3)]
     
-//    func fetchJSONMenu() async {
-//        let apiService = MenuAPIService()
-//        isLoading.toggle()
-//
-//        do {
-//            defer {
-//                isLoading.toggle()
-//            }
-//
-//            menu = try await apiService.getJSONMenu()
-//        } catch {
-//            showErrorAlert.toggle()
-//            errorMessage = error.localizedDescription + "\n Please inform the developer with the screen shot of the error message."
-//        }
-//    }
-    
     func fetchJSONMenuAndPopulateCoreData(_ coreDataContext: NSManagedObjectContext) async {
         let apiService = MenuAPIService()
         isLoading.toggle()
-
+        
         do {
             defer {
                 isLoading.toggle()
             }
-
+            
             menu = try await apiService.getJSONMenu()
             // populate Core Data Menu Items
             MenuItemEntity.deleteAll(coreDataContext)
             MenuItemEntity.populateMenuItemsFrom(JSONMenu: menu, coreDataContext)
-            fetchMenuItemsEntity()
+            fetchMenuItemsEntity(coreDataContext)
         } catch {
             showErrorAlert.toggle()
             errorMessage = error.localizedDescription + "\n Please inform the developer with the screen shot of the error message."
         }
     }
     
-    func fetchMenuItemsEntity() {
-        let container = PersistenceController.shared.container
+    func fetchMenuItemsEntity(_ coreDataContext: NSManagedObjectContext) {
         let request = NSFetchRequest<MenuItemEntity>(entityName: "MenuItemEntity")
         let sortDescriptor = NSSortDescriptor(key: "title",
                                               ascending: true,
                                               selector: #selector(NSString .localizedStandardCompare))
         request.sortDescriptors = [sortDescriptor]
-
+        
         do {
-            savedMenu = try container.viewContext.fetch(request)
+            savedMenu = try coreDataContext.fetch(request)
         } catch let error {
             print("Error fetching. \(error.localizedDescription)")
         }
@@ -94,27 +77,6 @@ final class MenuViewModel: ObservableObject {
             self.savedMenu = savedMenu.filter { $0.entityTitle.localizedCaseInsensitiveContains(searchText) }
         }
     }
-
-//    func filtered(item: String) {
-//        if isButtonPressed {
-//            self.menu = menu.map({$0}).filter({ $0.menuCategory.lowercased() == item.lowercased() })
-//        } else {
-//            Task(priority: .background) {
-//                await fetchJSONMenu()
-//            }
-//        }
-//    }
-    
-//    func searchMenuTitle() {
-//        if searchText.isEmpty {
-//            Task(priority: .background) {
-//                await fetchJSONMenu()
-//            }
-//            isButtonPressed = false
-//        } else {
-//            self.menu = menu.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
-//        }
-//    }
     
     func addOrder(title: String, price: String, quantity: Int) {
         let order = Order(title: title, price: price, quantity: quantity)

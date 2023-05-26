@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
+    // MARK: PROPERTIES
     @ObservedObject var loginVM: LoginViewModel
-    
     @Environment(\.dismiss) var dismiss
     
     @State private var showAlert: Bool = false
     @State private var showResetAlert: Bool = false
     
+    // MARK: BODY
     var body: some View {
         VStack {
             HeaderView(isLoggedIn: false).padding()
@@ -24,15 +25,23 @@ struct ForgotPasswordView: View {
         .padding()
         .background(.thinMaterial)
     }
-    
-    
+}
+
+// MARK: PREVIEW
+struct ForgotPasswordView_Previews: PreviewProvider {
+    static var previews: some View {
+        ForgotPasswordView(loginVM: LoginViewModel())
+    }
+}
+
+// MARK: COMPONENTS
+extension ForgotPasswordView {
     private var formFieldSection: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text("Please fill the form to reset your password.")
                 .font(.system(.subheadline, design: .serif, weight: .semibold))
                 .foregroundColor(Color("secondaryOne"))
                 .padding(.bottom)
-            
             
             FormFieldView(loginVM: loginVM, title: "Last Name", text: $loginVM.user.lastName, subtitleColor: Color.secondary, isSecure: false, isEmail: false, isGivenName: false)
             
@@ -44,7 +53,7 @@ struct ForgotPasswordView: View {
     private var resetButton: some View {
         // Reset Password button
         Button {
-//                print("Reset button \(Thread.current)")
+            //                print("Reset button \(Thread.current)")
             if loginVM.areFieldsValid {
                 showResetAlert.toggle()
             } else {
@@ -67,11 +76,5 @@ struct ForgotPasswordView: View {
         } message: {
             Text("We will send you a link to your e-mail address for resetting your password.\n Please check your e-mail!")
         }
-    }
-}
-
-struct ForgotPasswordView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForgotPasswordView(loginVM: LoginViewModel())
     }
 }
