@@ -13,27 +13,25 @@ Users could
 * display menu items by name using search feature
 * change their personal information and e-mail notifications preferences from the profile tab.
 
-
 ### Screenshots
 
 **Dark Mode Screenshots**
 
-|![dark1](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/74a48931-4108-4cf1-9349-94bc7a49acf4)|![dark2](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/808e4959-4c0c-411e-aac9-ab7e8f2d6339)|![dark3](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/5af9316e-998c-46fb-a61e-a23c1f7c19eb)|
+|![dark1](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/b9fb27e7-28e0-4821-9fde-13226685194e)|![dark2](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/ff003d77-ffc1-4c69-96d1-178dd25c2263)|![dark3](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/c2bab616-2b8b-43e5-bb95-350841ba67ba)|
 |    :---:     |     :---:      |     :---:     |
-|![dark4](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/d92d3859-e40a-4d65-9f7e-d22f2d6a67ab)|![dark5](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/3a48a9c3-1a33-466a-93a5-351e46befa98)|![dark6](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/56562359-5aae-4369-813c-b8850dc37789)|
-|![dark7](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/8287cef6-368a-4273-b5c4-2c7a11b05738)|![dark8](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/37f7a1d7-7b02-48b8-8b07-2fea676a756d)|![dark9](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/a4420584-0312-4cce-a874-608d02d0c6b0)|
-|![dark10](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/243c7609-3a0b-4f63-8275-d95e32f273af)|![dark11](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/2454c32f-ba71-4937-8cff-a17a0828390f)|![dark12](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/a318867a-3541-4575-aa24-50b8c38ee9ce)|
-|![dark13](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/884cca00-363d-4f11-9c10-37f4923fe58b)|![dark14](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/091da4de-c7ba-42f2-b8ff-5c059690ff37)|          |
-
+|![dark4](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/f4805640-9e1d-4ff8-a3e0-99e69438d669)|![dark5](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/91058521-c7bb-4135-90ab-177c9913eed1)|![dark6](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/c7c4c923-6f1d-4627-901f-017327fcbade)|
+|![dark7](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/86ac1f80-7cc5-4821-af0d-9a285110d553)|![dark8](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/ad2f3d9f-7cd5-4230-a9be-11567982737d)|![dark9](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/46eee55e-77a3-4a22-a9ae-0908d0991299)|
+|![dark10](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/f5eed2d7-6876-48d8-a63d-826cfad61c77)|![dark11](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/748d5ece-a8f4-4c9f-b844-201c0e29a245)|![dark12](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/60c951e0-0be3-4f55-ab2b-f85f9193d531)|
+|![dark13](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/e2825dff-bf96-49d6-80aa-07b377ec754b)|![dark14](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/77010495-60fc-420c-8299-47d99277d7c6)|          |
 
 **Light Mode Screenshots**
 
-|![light1](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/9585e230-4ebb-43f1-bba8-4af2f25bde69)|![light2](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/bbe342b4-ab28-4a7d-8d4b-78e74fdd2dfd)|![light3](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/286e0697-bfe2-4c8e-82e3-82e3dac38659)|
+|![light1](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/6151168c-b522-4905-95c8-c502e81fd9aa)|![light2](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/7f86063a-f488-4751-bdda-6f0319de05c6)|![light3](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/1eed8d8e-204e-4fe5-babc-e0cd3f8d4e57)|
 |    :---:     |     :---:      |     :---:     |
-|![light4](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/0b373b3f-61f6-4e44-8911-da4eaeb259c8)|![light5](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/066b5e4a-5e40-4a90-b5bb-1240835b0e31)|![light6](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/4fa851b8-e6f8-42a8-baca-cb7f79827770)|
-|![light7](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/88b6b4d2-f9a4-44a0-a16d-679692f5955c)|![light8](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/ce66b090-a366-4961-8850-f400fc66ee77)|![light9](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/68e1db5f-f612-4d57-b76b-f2fe21395fe6)|
-|![light10](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/5cdc7486-16eb-4600-a631-59bdf55c9cff)|![light11](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/dbd4ff9d-b8e8-4e80-be6b-fadc0fadafc8)|![light12](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/0f12b611-7c0f-49dd-a2fa-e7c13d46c87b)|
-|![light13](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/91dbc041-ac7e-495c-9d5f-e48b07118460)|![light14](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/840ae6d4-8a01-471c-a175-24a951db337e)|         |
+|![light4](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/86b953aa-e8f7-4b7f-93cc-3ebd95c51ead)|![light5](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/6ac3db9f-f24c-46a4-b05b-390f0e8823d0)|![light6](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/7c9d38ca-96be-43ba-8ea8-3504b738df4f)|
+|![light7](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/5efa4876-3959-42ec-8d6b-3d5bf3e193c9)|![light8](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/88dc0115-3967-4cf5-ba01-0959ad781f00)|![light9](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/f991ec08-7d34-4a06-b558-6b6c0534ba75)|
+|![light10](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/879deb30-0d15-4e5e-a1b0-ae7747871745)|![light11](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/ae9220cb-4b79-417f-8a51-84e057a2647e)|![light12](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/45dfa4a7-412a-4c19-b6ef-a9624694c8ab)|
+|![light13](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/068d1bae-5232-4e4f-af1d-5d595d74d9db)|![light14](https://github.com/idevF/LittleLemonRestaurantRevised/assets/124703341/e7cd1af7-b8b0-44ac-a8f8-bb979d00c1ab)|         |
 
 
 
